@@ -1,16 +1,14 @@
-#include <Wire.h>
-#include "Gripper.h"
-#include "MLX90393.h"
-#define IN1 8
-#define IN2 6
+#include "include/Gripper.h"
+#include "include/MLX90393.h"
+#define IN1 0
+#define IN2 1
 #define SLEEP 7
 #define PMODE 9
 
 #define VERBOSE true
-// MLX90393 I2C Address is 0x0C(12)
 #define Addr 0x0C
-Gripper grip(IN1,IN2,SLEEP,PMODE);
-MLX90393 MagneticSensor(Addr);
+
+
 unsigned int sampleCount = 0;
 unsigned long sampleRate = 0;
 
@@ -21,18 +19,21 @@ int FAST_LOOP_PREV=0;
 float SLOW_LOOP_T = 1000/5;
 float FAST_LOOP_T = 500;
 
-
 const byte value1 = 4; //rfh
 char hostReceived[value1];
 boolean rfhData = false;
 int rfh = 0;
+Gripper grip(IN1,IN2,SLEEP,PMODE);
 
 void setup() {
   Serial.begin(230400);
+  MLX90393 MagneticSensor(Addr);
 } 
 
 //Main Loop
 void loop() {
+
+  MLX90393 MagneticSensor(Addr);
 //Communicationloop - 30Hz
   if (millis() - SLOW_LOOP_PREV > SLOW_LOOP_T )
   {
@@ -61,8 +62,6 @@ void loop() {
   {
     sampleRate=sampleCount;
     previous=millis();
-    // Serial.println(sampleCount);  
-    // Serial.print(",");
     sampleCount=0;    
   }  
 }

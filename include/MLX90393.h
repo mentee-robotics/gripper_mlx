@@ -8,14 +8,14 @@ class MLX90393 {
     int x; 
     int y; 
     int z;
+    unsigned char _Addr;
   private:
-    unsigned char Addr;
-    unsigned int c ;
     int once;
     int startTime;
     int first_xMag;
     int first_yMag;
     int first_zMag;
+    unsigned int data[7];
 };
 
 #endif

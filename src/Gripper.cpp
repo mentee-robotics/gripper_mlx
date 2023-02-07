@@ -1,6 +1,6 @@
 // Gripper.cpp
-#include "Gripper.h"
-#include "Arduino.h"
+#include "../include/Gripper.h"
+#include <Arduino.h>
 
 Gripper::Gripper(int IN1,int IN2,int SLEEP,int PMODE) {
   _IN1=IN1;
@@ -14,8 +14,16 @@ Gripper::Gripper(int IN1,int IN2,int SLEEP,int PMODE) {
   digitalWrite(_SLEEP,HIGH);
   digitalWrite(_PMODE,HIGH);
   Kp =0.15;
-  Ki =0.001;
+  Ki =0.0035;
   Kd =0;
+  error=0;           // error between current and target positions
+  lastError=0;         // previous error value
+  integral=0;         // integral of error over time
+  derivative=0;        // derivative of error over time
+  output=0;      // output value to control motor
+  dir=-1;
+  targetPosition = 0; 
+  ActualPosition = 0;
 }
 
 void Gripper::pidStep() {
