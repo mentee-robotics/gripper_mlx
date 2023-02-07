@@ -1,5 +1,9 @@
 #include "include/Gripper.h"
 #include "include/MLX90393.h"
+#include "include/CommController.h"
+#include "SoftwareSerial.h"
+SoftwareSerial mySerial(9,8);
+
 #define IN1 0
 #define IN2 1
 #define SLEEP 7
@@ -24,6 +28,7 @@ char hostReceived[value1];
 boolean rfhData = false;
 int rfh = 0;
 Gripper grip(IN1,IN2,SLEEP,PMODE);
+RS485Comm hello(&mySerial);
 
 void setup() {
   Serial.begin(230400);
@@ -51,7 +56,10 @@ void loop() {
   //Fast Loop - 500-1KHz
   if (micros() - FAST_LOOP_PREV > FAST_LOOP_T )
   {
-  ReadFromHost();
+  grip.targetPosition = hello.ReadFromHost(&mySerial);
+      if (mySerial.available()) Serial.print("hi");
+
+//  Serial.println(grip.targetPosition);
   grip.pidStep();
   FAST_LOOP_PREV=micros();
   sampleCount++;
@@ -65,40 +73,3 @@ void loop() {
     sampleCount=0;    
   }  
 }
-
-void ReadFromHost()
-{
-    static byte ndx = 0;
-    char endMarker = '\n';
-    char rc;
-    
-    if (Serial.available() > 0) 
-    { 
-        rc = Serial.read();
-        if (rc != endMarker) 
-        {
-          hostReceived[ndx] = rc;
-          ndx++;
-          if (ndx >= value1) 
-          {
-              ndx = value1 - 1;
-          }
-        }
-        else 
-        {
-          hostReceived[ndx] = '\0'; 
-          ndx = 0;
-          rfhData = true;
-        }
-    }  
-    if (rfhData == true) 
-    {
-        rfh = 0;             
-        rfh = atoi(hostReceived);   
-        grip.targetPosition = rfh;
-        rfhData = false;
-        Serial.println(rfh);
-        Serial.println("*****************************");
-    }
-}
-
