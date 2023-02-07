@@ -5,16 +5,12 @@ class MLX90393 {
   public:
     MLX90393(unsigned char Addr);
     void Read();
+    void Setup(unsigned char Addr);
     int x; 
     int y; 
     int z;
     unsigned char _Addr;
   private:
-    int once;
-    int startTime;
-    int first_xMag;
-    int first_yMag;
-    int first_zMag;
     unsigned int data[7];
 };
 

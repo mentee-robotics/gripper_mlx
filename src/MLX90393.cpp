@@ -7,15 +7,15 @@ MLX90393::MLX90393(unsigned char Addr) {
   x=0;
   y=0;
   z=0;
-  first_xMag=0;
-  first_yMag=0;
-  first_zMag=0;
-  once=0;
   _Addr=Addr;
-  //i2c setup
+
+}
+void MLX90393::Setup(unsigned char Addr) {
+
+//i2c setup
   Wire1.begin();
   // Start I2C Transmission
-  Wire1.beginTransmission(_Addr);
+  Wire1.beginTransmission(Addr);
   // Select Write register command
   Wire1.write(0x60);
   // Set AH = 0x00, BIST disabled
@@ -28,7 +28,7 @@ MLX90393::MLX90393(unsigned char Addr) {
   Wire1.endTransmission();
   
   // Request 1 byte of data
-  Wire1.requestFrom(_Addr, 1);
+  Wire1.requestFrom(Addr, 1);
   
   // Read status byte
   if(Wire1.available() == 1)
@@ -36,15 +36,8 @@ MLX90393::MLX90393(unsigned char Addr) {
   unsigned int c = Wire1.read();
   }
 }
-
 void MLX90393::Read() {
-  if (millis() - startTime > 1000 && millis() - startTime < 3000 && once < 1) {  
-  first_xMag=x;
-  first_yMag=y;
-  first_zMag=z;
-  once++;
-  }
-  
+ 
     
   // Start I2C Transmission
   Wire1.beginTransmission(_Addr);
@@ -81,7 +74,7 @@ void MLX90393::Read() {
   }
   
   // Convert the data
-  x = data[1] * 256 + data[2]-first_xMag;
-  y = data[3] * 256 + data[4]-first_yMag;
-  z = data[5] * 256 + data[6]-first_zMag;
+  x = data[1] * 256 + data[2];
+  y = data[3] * 256 + data[4];
+  z = data[5] * 256 + data[6];
 }
