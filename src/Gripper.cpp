@@ -22,12 +22,12 @@ Gripper::Gripper(int IN1,int IN2,int SLEEP,int PMODE) {
   derivative=0;        // derivative of error over time
   output=0;      // output value to control motor
   dir=-1;
-  targetPosition = 0; 
+  targetPosition = 5; 
   ActualPosition = 0;
 }
 
 void Gripper::pidStep() {
-  ActualPosition=mapfloat(analogRead(A0),310,70,0,100);
+  ActualPosition=mapfloat(analogRead(A0),280,90,0,100);
   // ActualPosition=analogRead(A0);
   error = targetPosition - ActualPosition;
   // update the integral and derivative terms
