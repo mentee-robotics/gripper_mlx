@@ -49,11 +49,12 @@ class TalkToGripper:
         if wanted_gripper == "left":
             address = self.left_gripper_address
         
-        
         self.message_to_send[0] = self.header
         self.message_to_send[1] = address
         self.message_to_send[2] = wanted_position
         self.message_to_send[3] = self.tail
+
+        self.send_data()
   
         
     def send_data(self):
@@ -74,7 +75,7 @@ class TalkToGripper:
         GPIO.output(self.rs485_RE_enable_pin,GPIO.LOW)
         
         get_data = self.gripper.read_until(expected="0x0a")
-        self.received_message = get_data[1:19]   # the script reads the RE/DE HIGH/LOW changes as  bytes. this how we remove them
+        self.received_message = get_data[1:17]   # the script reads the RE/DE HIGH/LOW changes as  bytes. this how we remove them
 
         # extracting data from the raw message:
         self.process_data()
@@ -82,7 +83,7 @@ class TalkToGripper:
         
     def process_data(self):
         data = self.received_message
-        if len(data) > 17:
+        if len(data) > 15:
         
             byte_header = data[0]
             byte_actual_pos = [data[1],data[2]]
@@ -90,15 +91,15 @@ class TalkToGripper:
             byte_mlx_X = [data[7],data[8]]
             byte_mlx_y = [data[9],data[10]]
             byte_mlx_z = [data[11],data[12]]
-            byte_crc = [data[13],data[14],data[15],data[16]]
-            byte_tail = data[17]
+            byte_crc = [data[13],data[14]]
+            byte_tail = data[15]
 
             actual_pos = struct.unpack('>h', bytes(byte_actual_pos))[0]
             current = struct.unpack('>f', bytes(byte_current))[0]
             mlx_x = struct.unpack('>h', bytes(byte_mlx_X))[0]
             mlx_y = struct.unpack('>h', bytes(byte_mlx_y))[0]
             mlx_z = struct.unpack('>h', bytes(byte_mlx_z))[0]
-            crc = struct.unpack('>i', bytes(byte_crc))[0]
+            crc = struct.unpack('>h', bytes(byte_crc))[0]
 
             # find the crc of the message
             data_without_crc = bytes([data[0],data[1],data[2],data[3],data[4],data[5],data[6],data[7],data[8],data[9],data[10],data[11],data[12]])
