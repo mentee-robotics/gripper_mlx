@@ -2,9 +2,9 @@
 #include <SoftwareSerial.h>
 #include <cstddef>
 
-RS485Comm::RS485Comm(SoftwareSerial *mySerial){
-    mySerial->begin(115200);
-    // ofekSerial.begin(115200);
+RS485Comm::RS485Comm(){
+    // mySerial->begin(115200);
+    ofekSerial.begin(115200);
     pinMode(RE, OUTPUT);
     pinMode(DE, OUTPUT);
     // digitalWrite(DE, LOW); // Disable RS485 transmission
@@ -31,7 +31,7 @@ void RS485Comm::prepare_receive() {
 }
 
 
-void RS485Comm::create_and_send_packet(SoftwareSerial *mySerial, int actual_pos , float current , int mlx_x , int mlx_y , int mlx_z) {
+void RS485Comm::create_and_send_packet(int actual_pos , float current , int mlx_x , int mlx_y , int mlx_z) {
     prepare_transmit();
     // digitalWrite(DE, HIGH); 
     // digitalWrite(RE, HIGH);
@@ -73,8 +73,8 @@ void RS485Comm::create_and_send_packet(SoftwareSerial *mySerial, int actual_pos 
     message_array[14] = crc_2;
     message_array[15] = tail;
 
-    mySerial->write(message_array, 16);
-    mySerial->flush();
+    ofekSerial.write(message_array, 16);
+    ofekSerial.flush();
     // digitalWrite(DE, LOW); 
     // digitalWrite(RE, LOW);
     prepare_receive();
@@ -107,7 +107,7 @@ int RS485Comm::count_ones(byte array[], int length) {
     return count;
 }
 
-int RS485Comm::ReadFromHost(SoftwareSerial *mySerial) {
+int RS485Comm::ReadFromHost() {
     static byte ndx = 0;
     static int counter = 1;
     static bool normal_message = false;
@@ -118,9 +118,9 @@ int RS485Comm::ReadFromHost(SoftwareSerial *mySerial) {
     int wanted_pos;
     static char last_rc;
     int byte_header = 170;
-    if (mySerial->available()) 
+    if (ofekSerial.available()) 
     { 
-        byte_rc = mySerial->read();
+        byte_rc = ofekSerial.read();
     if (byte_rc != 0) {       //bandage
         Serial.println(byte_rc);
         if (byte_rc == byte_header) {
@@ -149,8 +149,8 @@ int RS485Comm::ReadFromHost(SoftwareSerial *mySerial) {
     if(sthData == true){
         if(millis() - last_received > WAIT_BETWEEN_SNR){
             sthData = false;
-            create_and_send_packet(mySerial, actual_pos ,  current ,  mlx_x ,  mlx_y ,  mlx_z);
-            mySerial->flush();
+            create_and_send_packet(actual_pos ,  current ,  mlx_x ,  mlx_y ,  mlx_z);
+            ofekSerial.flush();
     }
     }
     return wanted_pos;

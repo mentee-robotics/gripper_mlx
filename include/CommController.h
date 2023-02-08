@@ -8,14 +8,14 @@
 class RS485Comm {
     public:
 
-    RS485Comm(SoftwareSerial *mySerial);
+    RS485Comm();
     void prepare_transmit();
     void prepare_receive();
     // void RS485Comm_setup(int RE , int DE);
-    void create_and_send_packet(SoftwareSerial *mySerial, int actual_pos , float current , int mlx_x , int mlx_y , int mlx_z);
+    void create_and_send_packet(int actual_pos , float current , int mlx_x , int mlx_y , int mlx_z);
     void floatToBytes(float num, byte *bytes_array);
     int count_ones(byte array[], int length);
-    int ReadFromHost(SoftwareSerial *mySerial);
+    int ReadFromHost();
     int RE = 6;
     int DE = 7;
     int Rx;
@@ -26,13 +26,14 @@ class RS485Comm {
     int mlx_x;
     int mlx_y;
     int mlx_z;
-
+    uint8_t rx_pin = 9;
+    uint8_t tx_pin = 8;
     int counter = 1;
     bool normal_message = false;
     char last_rc;
     
     private:
-    SoftwareSerial ofekSerial(,9,8);
+    SoftwareSerial _ofekSerial(7, 8);
     byte message_array[16];
     byte current_array[4];
     byte packet_header{0b11111111};

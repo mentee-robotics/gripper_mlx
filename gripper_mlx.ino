@@ -1,8 +1,8 @@
 #include "include/Gripper.h"
 #include "include/MLX90393.h"
 #include "include/CommController.h"
-#include "SoftwareSerial.h"
-SoftwareSerial mySerial(9,8);
+#include "include/SoftwareSerial.h"
+//SoftwareSerial mySerial(9,8);
 
 #define IN1 0
 #define IN2 1
@@ -28,7 +28,7 @@ char hostReceived[value1];
 boolean rfhData = false;
 int rfh = 0;
 Gripper grip(IN1,IN2,SLEEP,PMODE);
-RS485Comm hello(&mySerial);
+RS485Comm hello;
 
 void setup() {
   Serial.begin(230400);
@@ -56,8 +56,7 @@ void loop() {
   //Fast Loop - 500-1KHz
   if (micros() - FAST_LOOP_PREV > FAST_LOOP_T )
   {
-  grip.targetPosition = hello.ReadFromHost(&mySerial);
-      if (mySerial.available()) Serial.print("hi");
+  grip.targetPosition = hello.ReadFromHost();
 
 //  Serial.println(grip.targetPosition);
   grip.pidStep();
