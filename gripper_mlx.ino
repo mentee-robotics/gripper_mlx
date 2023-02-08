@@ -2,7 +2,8 @@
 #include "include/MLX90393.h"
 #include "include/Pinout.h"
 #include "include/Configuration.h"
-
+#include "include/CommController.h"
+#include <SoftwareSerial.h>
 int sampleCount = 0;
 int sampleRate = 0;
 int previous=0;
@@ -17,12 +18,15 @@ char hostReceived[value1];
 boolean rfhData = false;
 int rfh = 0;
 
+SoftwareSerial mySerial(rx_pin,tx_pin);
 Gripper grip(IN1,IN2,SLEEP,PMODE);
+RS485Comm comms(&mySerial);
 MLX90393 MagneticSensor(Addr);
 
 void setup() {
   Serial.begin(230400);
   MagneticSensor.Setup(Addr);
+  comms.RS485Comm_setup();
 } 
 
 //Main Loop
@@ -46,6 +50,8 @@ void loop() {
   //Fast Loop - 500-1KHz
   if (micros() - FAST_LOOP_PREV > FAST_LOOP_T )
   {
+    comms.ReadFromHost();
+  // Serial.print("  Targ_Pos ");Serial.println();
   ReadFromHost();
   grip.pidStep();
   FAST_LOOP_PREV=micros();
@@ -96,7 +102,7 @@ void ReadFromHost()
         rfh = atoi(hostReceived);   
         grip.targetPosition = rfh;
         rfhData = false;
-        Serial.println(rfh);
+        Serial.println(rfh);//hihi
         Serial.println("*****************************");
     }
 }
