@@ -24,7 +24,7 @@ RS485Comm comms(&mySerial);
 MLX90393 MagneticSensor(Addr);
 
 void setup() {
-  Serial.begin(230400);
+  Serial.begin(115200);
   MagneticSensor.Setup(Addr);
   comms.RS485Comm_setup();
 } 
@@ -36,6 +36,11 @@ void loop() {
   if (millis() - SLOW_LOOP_PREV > SLOW_LOOP_T )
   {
     MagneticSensor.Read();
+      comms.mlx_x=MagneticSensor.x;
+      comms.mlx_y=MagneticSensor.y;
+      comms.mlx_z=MagneticSensor.z;
+      comms.actual_pos=grip.ActualPosition;
+      comms.current=(analogRead(A2)-(3.3/2))/0.4;
     if(VERBOSE){
     Serial.print("  Mlx_x ");Serial.print(MagneticSensor.x);
     Serial.print("  Mlx_y ");Serial.print(MagneticSensor.y);
@@ -50,9 +55,7 @@ void loop() {
   //Fast Loop - 500-1KHz
   if (micros() - FAST_LOOP_PREV > FAST_LOOP_T )
   {
-    comms.ReadFromHost();
-  // Serial.print("  Targ_Pos ");Serial.println();
-  ReadFromHost();
+  grip.targetPosition=comms.ReadFromHost();
   grip.pidStep();
   FAST_LOOP_PREV=micros();
   sampleCount++;

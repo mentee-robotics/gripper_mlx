@@ -60,7 +60,7 @@ class RS485Comm {
     int hostReceived[4];
     bool rfhData = false;
     int rfh = 0;
-    float WAIT_BETWEEN_SNR = 5;
+    float WAIT_BETWEEN_SNR = 3;
     unsigned long last_received;
     bool sthData = false;
 
