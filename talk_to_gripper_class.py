@@ -3,13 +3,14 @@ import time
 import struct
 import zlib
 import Jetson.GPIO as GPIO
+import random
 
 
 class TalkToGripper:
     
     def __init__(self):
         
-        self.gripper = serial.Serial(port = '/dev/ttyTHS0' , baudrate= 115200, timeout=1)
+        self.gripper = serial.Serial(port = '/dev/ttyTHS0' , baudrate= 115200, timeout=0.001)
 
         
         ######### pin setup #########
@@ -24,10 +25,12 @@ class TalkToGripper:
         ######### send message #########
         self.message_to_send = bytearray(4)
         self.header = b'\xAA'
-        self.tail = b'\x0A'
+        self.tail = b'\n'
         self.right_gripper_address = 1
         self.left_gripper_address = 2
         #############################
+        
+        
         
         
         ######### receive message ######
@@ -48,33 +51,31 @@ class TalkToGripper:
             address = self.right_gripper_address
         if wanted_gripper == "left":
             address = self.left_gripper_address
-        
-        
-        self.message_to_send[0] = self.header
-        self.message_to_send[1] = address
-        self.message_to_send[2] = wanted_position
-        self.message_to_send[3] = self.tail
+    
+        self.message_to_send[0] = self.header[0]
+        self.message_to_send[1] = (self.int_to_bytes(address))[0]
+        self.message_to_send[2] = (self.int_to_bytes(wanted_position))[0]
+        self.message_to_send[3] = self.tail[0]
+        self.send_data()
   
+    def int_to_bytes(self, value):
+        return bytes(chr(value), 'utf-8')
         
     def send_data(self):
-        
         GPIO.output(self.rs485_DE_enable_pin,GPIO.HIGH)
         GPIO.output(self.rs485_RE_enable_pin,GPIO.HIGH)
-        
         self.gripper.write(self.message_to_send)
-        self.gripper.flush()
-        
-        #after the gripper receives the message he will send a message back
+        time.sleep(0.001)
+        GPIO.output(self.rs485_DE_enable_pin,GPIO.LOW)
+        # GPIO.output(self.rs485_RE_enable_pin,GPIO.LOW)  
         self.receive_data()
+
    
         
     def receive_data(self):
-        
-        GPIO.output(self.rs485_DE_enable_pin,GPIO.LOW)
-        GPIO.output(self.rs485_RE_enable_pin,GPIO.LOW)
-        
+      
         get_data = self.gripper.read_until(expected="0x0a")
-        self.received_message = get_data[1:19]   # the script reads the RE/DE HIGH/LOW changes as  bytes. this how we remove them
+        self.received_message = get_data   
 
         # extracting data from the raw message:
         self.process_data()
@@ -82,7 +83,8 @@ class TalkToGripper:
         
     def process_data(self):
         data = self.received_message
-        if len(data) > 17:
+        
+        if len(data) > 15:
         
             byte_header = data[0]
             byte_actual_pos = [data[1],data[2]]
@@ -90,22 +92,22 @@ class TalkToGripper:
             byte_mlx_X = [data[7],data[8]]
             byte_mlx_y = [data[9],data[10]]
             byte_mlx_z = [data[11],data[12]]
-            byte_crc = [data[13],data[14],data[15],data[16]]
-            byte_tail = data[17]
+            byte_crc = [data[13],data[14]]
+            byte_tail = data[15]
 
             actual_pos = struct.unpack('>h', bytes(byte_actual_pos))[0]
             current = struct.unpack('>f', bytes(byte_current))[0]
             mlx_x = struct.unpack('>h', bytes(byte_mlx_X))[0]
             mlx_y = struct.unpack('>h', bytes(byte_mlx_y))[0]
             mlx_z = struct.unpack('>h', bytes(byte_mlx_z))[0]
-            crc = struct.unpack('>i', bytes(byte_crc))[0]
+            crc = struct.unpack('>h', bytes(byte_crc))[0]
 
             # find the crc of the message
             data_without_crc = bytes([data[0],data[1],data[2],data[3],data[4],data[5],data[6],data[7],data[8],data[9],data[10],data[11],data[12]])
             calculated_crc = self.calculate_crc(data_without_crc)
             
             # check integrity of message by comparing header, tail and crc:
-            message_integrity = self.check_message_integrity(byte_header, byte_tail, crc , calculated_crc)
+            message_integrity = self.check_message_integrity(byte_header, byte_tail, crc , calculated_crc)#Not Working
             
             if message_integrity:
                 self.mlx_x = mlx_x
@@ -113,6 +115,9 @@ class TalkToGripper:
                 self.mlx_z = mlx_z
                 self.actual_pos = actual_pos
                 self.current = current
+                
+            print(f"current: {current} actual_pos: {actual_pos} mlx-x {mlx_x} mlx-y {mlx_y} mlx-z {mlx_z}")
+
             
     def calculate_crc(self, byte_list):  # counting the ones in the byte array
         count = 0
@@ -135,7 +140,14 @@ class TalkToGripper:
         return integrity
     
     
-    def get_data(self)    # returns a list of data
+    def get_data(self):   # returns a list of data
         data = [self.actual_pos , self.current , self.mlx_x , self.mlx_y , self.mlx_z]
         return data
-        
+    
+    
+if __name__ == '__main__':
+    hello = TalkToGripper()
+    while True:
+        hello.go_to(wanted_gripper= "right" , wanted_position= 50)
+        hello.receive_data()
+        time.sleep(1/30)
