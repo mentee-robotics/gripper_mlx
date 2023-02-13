@@ -4,6 +4,11 @@
 #include "include/Configuration.h"
 #include "include/CommController.h"
 #include <SoftwareSerial.h>
+
+
+
+
+
 int sampleCount = 0;
 int sampleRate = 0;
 int previous=0;
