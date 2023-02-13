@@ -13,13 +13,19 @@ void RS485Comm::RS485Comm_setup(){
 }
 
 void RS485Comm:: prepare_transmit() {
+        mySerial->flush();
+
     digitalWrite(DE, HIGH); 
     digitalWrite(RE, HIGH);
+
 }
 
 void RS485Comm::prepare_receive() {
+        mySerial->flush();
+
     digitalWrite(DE, LOW); 
     digitalWrite(RE, LOW);
+
 }
 
 
@@ -66,10 +72,12 @@ void RS485Comm::create_and_send_packet(int actual_pos , float current , int mlx_
     message_array[15] = tail;
 
     mySerial->write(message_array, 16);
-    mySerial->flush();
+
     // digitalWrite(DE, LOW); 
     // digitalWrite(RE, LOW);
     prepare_receive();
+
+
 }
 
 void RS485Comm::floatToBytes(float num, byte *bytes_array) {
@@ -100,51 +108,42 @@ int RS485Comm::count_ones(byte array[], int length) {
 }
 
 int RS485Comm::ReadFromHost() {
-    static byte ndx = 0;
-    static int counter = 1;
-    static bool normal_message = false;
-    char endMarker = '\n';
+    // static byte ndx = 0;
+    // static int counter = 0;
+    // static bool normal_message = false;
+    // char endMarker = '\n';
     byte byte_rc;
-    int rc;
+    // int rc;
     int address;
-    int wanted_pos;
-    static char last_rc;
-    int byte_header = 170;
-    if (mySerial->available()) 
+    int i=0;
+    // int byte_header = 170;
+    // int byte_tail=10;
+    if (mySerial->available()>=4) 
     { 
     byte_rc = mySerial->read();
-    if (byte_rc != 0) {       //bandage
-        Serial.println(byte_rc);
-        if (byte_rc == byte_header) {
-            hostReceived[0] = byte_rc;
-            normal_message = true;
-        }
-        if (normal_message == true) {
-            hostReceived[counter] = byte_rc;
-            counter ++;
-        }
-        if (counter >= 4) {
+
+        if(byte_rc ==170){
+        hostReceived[i]= byte_rc;
+        // Serial.println(byte_rc);    
+        while(byte_rc!=10)
+            {
+                i++;
+                byte_rc = mySerial->read();
+                // Serial.println(byte_rc);    
+                hostReceived[i] = byte_rc;
+            }
             address = hostReceived[1];
             if (address == device_address) {
-                wanted_pos = hostReceived[2];
+                 wanted_pos = hostReceived[2];
+             }
+                    
             }
-            
-            normal_message = false;
-            counter = 0;
-            last_received = millis();
-            sthData = true;
-        }
     }
-    
-//TODO Check if message correct
-    }
-    if(sthData == true){
-        if(millis() - last_received > WAIT_BETWEEN_SNR){
-            sthData = false;
+        if(i == 3){
+            delay(3);
             create_and_send_packet(actual_pos ,  current ,  mlx_x ,  mlx_y ,  mlx_z);
-            mySerial->flush();
-    }
-    }
+        }
+
     return wanted_pos;
 }
 

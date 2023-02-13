@@ -58,11 +58,9 @@ class RS485Comm {
     char endMarker = '\n';
     int byte_header = 170;
     int hostReceived[4];
-    bool rfhData = false;
-    int rfh = 0;
-    float WAIT_BETWEEN_SNR = 5;
-    unsigned long last_received;
-    bool sthData = false;
+
+    float WAIT_BETWEEN_SNR = 3;
+
 
   
 
