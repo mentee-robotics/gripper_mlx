@@ -7,19 +7,25 @@ RS485Comm::RS485Comm(SoftwareSerial *Serial){
 
 void RS485Comm::RS485Comm_setup(){
     mySerial->begin(115200);
-    pinMode(RE, OUTPUT_PULLDOWN);
-    pinMode(DE, OUTPUT_PULLDOWN);
+    pinMode(RE, OUTPUT);
+    pinMode(DE, OUTPUT);
     prepare_receive();
 }
 
 void RS485Comm:: prepare_transmit() {
+        mySerial->flush();
+
     digitalWrite(DE, HIGH); 
     digitalWrite(RE, HIGH);
+
 }
 
 void RS485Comm::prepare_receive() {
+        mySerial->flush();
+
     digitalWrite(DE, LOW); 
     digitalWrite(RE, LOW);
+
 }
 
 
@@ -66,10 +72,12 @@ void RS485Comm::create_and_send_packet(int actual_pos , float current , int mlx_
     message_array[15] = tail;
 
     mySerial->write(message_array, 16);
-    mySerial->flush();
+
     // digitalWrite(DE, LOW); 
     // digitalWrite(RE, LOW);
     prepare_receive();
+
+
 }
 
 void RS485Comm::floatToBytes(float num, byte *bytes_array) {
@@ -134,7 +142,6 @@ int RS485Comm::ReadFromHost() {
         if(i == 3){
             delay(3);
             create_and_send_packet(actual_pos ,  current ,  mlx_x ,  mlx_y ,  mlx_z);
-            mySerial->flush();
         }
 
     return wanted_pos;
