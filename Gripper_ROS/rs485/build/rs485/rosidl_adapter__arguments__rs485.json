@@ -1,0 +1,7 @@
+{
+  "package_name": "rs485",
+  "non_idl_tuples": [
+    "/home/nir/Desktop/rs485:msg/GripperStatus.msg",
+    "/home/nir/Desktop/rs485:msg/BatteryStatus.msg"
+  ]
+}

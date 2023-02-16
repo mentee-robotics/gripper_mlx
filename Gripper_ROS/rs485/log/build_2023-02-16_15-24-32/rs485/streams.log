@@ -1,0 +1,8 @@
+[0.010s] Invoking command in '/home/nir/Desktop/rs485/build/rs485': CMAKE_PREFIX_PATH=/opt/ros/foxy:${CMAKE_PREFIX_PATH} CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake /home/nir/Desktop/rs485 -DCMAKE_INSTALL_PREFIX=/home/nir/Desktop/rs485/install/rs485
+[0.015s] CMake Error at CMakeLists.txt:23:
+[0.015s]   Parse error.  Expected a command name, got unquoted argument with text
+[0.015s]   "<build_depend>rosidl_default_generators</build_depend>".
+[0.015s] 
+[0.016s] 
+[0.016s] -- Configuring incomplete, errors occurred!
+[0.017s] Invoked command in '/home/nir/Desktop/rs485/build/rs485' returned '1': CMAKE_PREFIX_PATH=/opt/ros/foxy:${CMAKE_PREFIX_PATH} CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake /home/nir/Desktop/rs485 -DCMAKE_INSTALL_PREFIX=/home/nir/Desktop/rs485/install/rs485

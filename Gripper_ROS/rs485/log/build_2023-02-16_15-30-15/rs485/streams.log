@@ -1,0 +1,52 @@
+[0.014s] Invoking command in '/home/nir/Desktop/rs485/build/rs485': CMAKE_PREFIX_PATH=/opt/ros/foxy:${CMAKE_PREFIX_PATH} CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake /home/nir/Desktop/rs485 -DCMAKE_INSTALL_PREFIX=/home/nir/Desktop/rs485/install/rs485
+[0.023s] -- Found ament_cmake: 0.9.11 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.040s] -- Found PythonInterp: /home/nir/anaconda3/bin/python3 (found suitable version "3.9.13", minimum required is "3") 
+[0.040s] -- Using PYTHON_EXECUTABLE: /home/nir/anaconda3/bin/python3
+[0.176s] -- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)
+[0.177s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.179s] -- Found rosidl_adapter: 1.3.0 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[0.270s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.308s] -- Found PythonInterp: /home/nir/anaconda3/bin/python3 (found version "3.9.13") 
+[0.344s] CMake Error at /opt/ros/foxy/share/rosidl_adapter/cmake/rosidl_adapt_interfaces.cmake:60 (message):
+[0.344s]   execute_process(/home/nir/anaconda3/bin/python3 -m rosidl_adapter
+[0.344s]   --package-name rs485 --arguments-file
+[0.344s]   /home/nir/Desktop/rs485/build/rs485/rosidl_adapter__arguments__rs485.json
+[0.344s]   --output-dir /home/nir/Desktop/rs485/build/rs485/rosidl_adapter/rs485
+[0.344s]   --output-file
+[0.344s]   /home/nir/Desktop/rs485/build/rs485/rosidl_adapter/rs485.idls) returned
+[0.344s]   error code 1:
+[0.344s] 
+[0.344s]   Error processing 'int64 xMag' of 'rs485/GripperStatus': ''xMag' is an
+[0.344s]   invalid field name.  It should have the pattern
+[0.344s]   '^(?!.*__)(?!.*_$)[a-z][a-z0-9_]*$''
+[0.344s] 
+[0.344s]   Traceback (most recent call last):
+[0.344s] 
+[0.345s]     File "/home/nir/anaconda3/lib/python3.9/runpy.py", line 197, in _run_module_as_main
+[0.345s]       return _run_code(code, main_globals, None,
+[0.345s]     File "/home/nir/anaconda3/lib/python3.9/runpy.py", line 87, in _run_code
+[0.345s]       exec(code, run_globals)
+[0.345s]     File "/opt/ros/foxy/lib/python3.8/site-packages/rosidl_adapter/__main__.py", line 19, in <module>
+[0.345s]       sys.exit(main())
+[0.345s]     File "/opt/ros/foxy/lib/python3.8/site-packages/rosidl_adapter/main.py", line 53, in main
+[0.345s]       abs_idl_file = convert_to_idl(
+[0.345s]     File "/opt/ros/foxy/lib/python3.8/site-packages/rosidl_adapter/__init__.py", line 19, in convert_to_idl
+[0.345s]       return convert_msg_to_idl(
+[0.345s]     File "/opt/ros/foxy/lib/python3.8/site-packages/rosidl_adapter/msg/__init__.py", line 28, in convert_msg_to_idl
+[0.345s]       msg = parse_message_string(package_name, input_file.stem, content)
+[0.345s]     File "/opt/ros/foxy/lib/python3.8/site-packages/rosidl_adapter/parser.py", line 515, in parse_message_string
+[0.345s]       fields.append(Field(
+[0.345s]     File "/opt/ros/foxy/lib/python3.8/site-packages/rosidl_adapter/parser.py", line 353, in __init__
+[0.345s]       raise NameError(
+[0.345s] 
+[0.345s]   NameError: 'xMag' is an invalid field name.  It should have the pattern
+[0.345s]   '^(?!.*__)(?!.*_$)[a-z][a-z0-9_]*$'
+[0.345s] 
+[0.345s] Call Stack (most recent call first):
+[0.345s]   /opt/ros/foxy/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:130 (rosidl_adapt_interfaces)
+[0.345s]   CMakeLists.txt:25 (rosidl_generate_interfaces)
+[0.345s] 
+[0.345s] 
+[0.345s] -- Configuring incomplete, errors occurred!
+[0.345s] See also "/home/nir/Desktop/rs485/build/rs485/CMakeFiles/CMakeOutput.log".
+[0.350s] Invoked command in '/home/nir/Desktop/rs485/build/rs485' returned '1': CMAKE_PREFIX_PATH=/opt/ros/foxy:${CMAKE_PREFIX_PATH} CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake /home/nir/Desktop/rs485 -DCMAKE_INSTALL_PREFIX=/home/nir/Desktop/rs485/install/rs485

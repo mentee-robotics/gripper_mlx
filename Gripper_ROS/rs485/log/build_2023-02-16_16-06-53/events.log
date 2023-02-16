@@ -1,0 +1,200 @@
+[0.000000] (-) TimerEvent: {}
+[0.000092] (rs485) JobQueued: {'identifier': 'rs485', 'dependencies': OrderedDict()}
+[0.001018] (rs485) JobStarted: {'identifier': 'rs485'}
+[0.008869] (rs485) JobProgress: {'identifier': 'rs485', 'progress': 'cmake'}
+[0.013995] (rs485) JobProgress: {'identifier': 'rs485', 'progress': 'build'}
+[0.014032] (rs485) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/nir/Desktop/rs485/build/rs485', '--', '-j20', '-l20'], 'cwd': '/home/nir/Desktop/rs485/build/rs485', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('CONDA_PROMPT_MODIFIER', '(base)'), ('LANGUAGE', 'en_IL:en'), ('USER', 'nir'), ('SSH_AGENT_PID', '2308'), ('ROS_PACKAGE_PATH', '/opt/ros/noetic/share'), ('XDG_SESSION_TYPE', 'x11'), ('ROS_ETC_DIR', '/opt/ros/noetic/etc/ros'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/nir/Desktop/rs485/install/rs485/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib:/opt/ros/noetic/lib'), ('HOME', '/home/nir'), ('CONDA_SHLVL', '1'), ('OLDPWD', '/home/nir/Desktop'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/terminator.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '2119'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('_CE_M', ''), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '25501'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/nir/Desktop/rs485/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'nir'), ('JOURNAL_STREAM', '8:67837'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('PKG_CONFIG_PATH', '/opt/ros/noetic/lib/pkgconfig'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'nir'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('_CE_CONDA', ''), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/foxy/bin:/opt/ros/noetic/bin:/home/nir/anaconda3/bin:/home/nir/anaconda3/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/LevyTech:@/tmp/.ICE-unix/2346,unix/LevyTech:/tmp/.ICE-unix/2346'), ('INVOCATION_ID', '8d6163cc1e09459c90df51758a3b8b84'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('ROSLISP_PACKAGE_DIRECTORIES', ''), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('ROS_ROOT', '/opt/ros/noetic/share/ros'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/nir/Desktop/rs485/install/rs485:/opt/ros/foxy'), ('CONDA_PYTHON_EXE', '/home/nir/anaconda3/bin/python'), ('SHELL', '/bin/bash'), ('TERMINATOR_UUID', 'urn:uuid:e9116272-6e84-4f69-8315-689c75fe69af'), ('QT_ACCESSIBILITY', '1'), ('ROS_MASTER_URI', 'http://localhost:11311'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('CONDA_DEFAULT_ENV', 'base'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/nir/Desktop/rs485/build/rs485'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('CONDA_EXE', '/home/nir/anaconda3/bin/conda'), ('PICO_SDK_PATH', '/opt/pico-sdk'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/nir/Desktop/rs485/install/rs485/lib/python3.9/site-packages:/opt/ros/foxy/lib/python3.8/site-packages:/opt/ros/noetic/lib/python3/dist-packages'), ('CONDA_PREFIX', '/home/nir/anaconda3'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/home/nir/Desktop/rs485/install/rs485:/opt/ros/foxy:/opt/ros/noetic')]), 'shell': False}
+[0.033873] (rs485) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.11 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[0.052899] (rs485) StdoutLine: {'line': b'-- Found PythonInterp: /home/nir/anaconda3/bin/python3 (found suitable version "3.9.13", minimum required is "3") \n'}
+[0.053009] (rs485) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /home/nir/anaconda3/bin/python3\n'}
+[0.099831] (-) TimerEvent: {}
+[0.200181] (-) TimerEvent: {}
+[0.204335] (rs485) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)\n'}
+[0.205728] (rs485) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.207751] (rs485) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.3.0 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[0.300389] (-) TimerEvent: {}
+[0.315890] (rs485) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.347502] (rs485) StdoutLine: {'line': b'-- Found PythonInterp: /home/nir/anaconda3/bin/python3 (found version "3.9.13") \n'}
+[0.400574] (-) TimerEvent: {}
+[0.448477] (rs485) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.9.2 (/opt/ros/foxy/share/ament_cmake_ros/cmake)\n'}
+[0.500776] (-) TimerEvent: {}
+[0.513451] (rs485) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.517547] (rs485) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.539428] (rs485) StdoutLine: {'line': b'-- Found PythonInterp: /home/nir/anaconda3/bin/python3 (found suitable version "3.9.13", minimum required is "3.5") \n'}
+[0.539547] (rs485) StdoutLine: {'line': b'-- Found python_cmake_module: 0.8.1 (/opt/ros/foxy/share/python_cmake_module/cmake)\n'}
+[0.558349] (rs485) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /home/nir/anaconda3/bin/python3\n'}
+[0.558487] (rs485) StdoutLine: {'line': b'-- Using PYTHON_INCLUDE_DIRS: /home/nir/anaconda3/include/python3.9\n'}
+[0.558528] (rs485) StdoutLine: {'line': b'-- Using PYTHON_LIBRARIES: /home/nir/anaconda3/lib/libpython3.9.so\n'}
+[0.600968] (-) TimerEvent: {}
+[0.638818] (rs485) StdoutLine: {'line': b'-- Using numpy include directory: /home/nir/anaconda3/lib/python3.9/site-packages/numpy/core/include\n'}
+[0.644550] (rs485) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.9.7 (/opt/ros/foxy/share/ament_lint_auto/cmake)\n'}
+[0.657198] (rs485) StdoutLine: {'line': b"-- Added test 'copyright' to check source files copyright and LICENSE\n"}
+[0.673854] (rs485) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[0.674650] (rs485) StdoutLine: {'line': b'-- Configured cppcheck include dirs: $<BUILD_INTERFACE:/home/nir/Desktop/rs485/build/rs485/rosidl_generator_c>;/home/nir/Desktop/rs485/build/rs485/rosidl_generator_c;/home/nir/Desktop/rs485/build/rs485/rosidl_generator_cpp;/home/nir/Desktop/rs485/build/rs485/rosidl_typesupport_fastrtps_c;/home/nir/Desktop/rs485/build/rs485/rosidl_typesupport_fastrtps_cpp;$<BUILD_INTERFACE:/home/nir/Desktop/rs485/build/rs485/rosidl_typesupport_introspection_c>;$<BUILD_INTERFACE:/home/nir/Desktop/rs485/build/rs485/rosidl_typesupport_c>;$<BUILD_INTERFACE:/home/nir/Desktop/rs485/build/rs485/rosidl_generator_cpp>;/home/nir/Desktop/rs485/build/rs485/rosidl_generator_py\n'}
+[0.674745] (rs485) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[0.686097] (rs485) StdoutLine: {'line': b"-- Added test 'cpplint' to check C / C++ code against the Google style\n"}
+[0.686221] (rs485) StdoutLine: {'line': b'-- Configured cpplint exclude dirs and/or files: \n'}
+[0.687696] (rs485) StdoutLine: {'line': b"-- Added test 'flake8' to check Python code syntax and style conventions\n"}
+[0.690665] (rs485) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[0.692247] (rs485) StdoutLine: {'line': b"-- Added test 'pep257' to check Python code against some of the style conventions in PEP 257\n"}
+[0.701175] (-) TimerEvent: {}
+[0.703754] (rs485) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[0.703908] (rs485) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[0.705347] (rs485) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[0.707264] (rs485) StdoutLine: {'line': b'-- Configuring done\n'}
+[0.720219] (rs485) StderrLine: {'line': b'CMake Warning at /opt/ros/foxy/share/rosidl_generator_py/cmake/rosidl_generator_py_generate_interfaces.cmake:235 (add_library):\n'}
+[0.720406] (rs485) StderrLine: {'line': b'  Cannot generate a safe runtime search path for target\n'}
+[0.720489] (rs485) StderrLine: {'line': b'  rs485__rosidl_typesupport_fastrtps_c__pyext because files in some\n'}
+[0.720566] (rs485) StderrLine: {'line': b'  directories may conflict with libraries in implicit directories:\n'}
+[0.720639] (rs485) StderrLine: {'line': b'\n'}
+[0.720712] (rs485) StderrLine: {'line': b'    runtime library [libssl.so.1.1] in /usr/lib/x86_64-linux-gnu may be hidden by files in:\n'}
+[0.720785] (rs485) StderrLine: {'line': b'      /home/nir/anaconda3/lib\n'}
+[0.720855] (rs485) StderrLine: {'line': b'    runtime library [libcrypto.so.1.1] in /usr/lib/x86_64-linux-gnu may be hidden by files in:\n'}
+[0.720931] (rs485) StderrLine: {'line': b'      /home/nir/anaconda3/lib\n'}
+[0.721002] (rs485) StderrLine: {'line': b'\n'}
+[0.721074] (rs485) StderrLine: {'line': b'  Some of these libraries may not be found correctly.\n'}
+[0.721144] (rs485) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[0.721215] (rs485) StderrLine: {'line': b'  /opt/ros/foxy/share/ament_cmake_core/cmake/core/ament_execute_extensions.cmake:48 (include)\n'}
+[0.721286] (rs485) StderrLine: {'line': b'  /opt/ros/foxy/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:286 (ament_execute_extensions)\n'}
+[0.721356] (rs485) StderrLine: {'line': b'  CMakeLists.txt:25 (rosidl_generate_interfaces)\n'}
+[0.721425] (rs485) StderrLine: {'line': b'\n'}
+[0.721494] (rs485) StderrLine: {'line': b'\n'}
+[0.731571] (rs485) StdoutLine: {'line': b'-- Generating done\n'}
+[0.733226] (rs485) StdoutLine: {'line': b'-- Build files have been written to: /home/nir/Desktop/rs485/build/rs485\n'}
+[0.756140] (rs485) StdoutLine: {'line': b'[  2%] Built target rs485__cpp\n'}
+[0.756405] (rs485) StdoutLine: {'line': b'[ 12%] Built target rs485__rosidl_generator_c\n'}
+[0.768865] (rs485) StdoutLine: {'line': b'[ 30%] Built target rs485__rosidl_typesupport_introspection_cpp\n'}
+[0.769060] (rs485) StdoutLine: {'line': b'[ 33%] Built target rs485__rosidl_typesupport_introspection_c\n'}
+[0.769147] (rs485) StdoutLine: {'line': b'[ 51%] Built target rs485__rosidl_typesupport_cpp\n'}
+[0.769226] (rs485) StdoutLine: {'line': b'[ 53%] Built target rs485__rosidl_typesupport_c\n'}
+[0.770489] (rs485) StdoutLine: {'line': b'[ 64%] Built target rs485__rosidl_typesupport_fastrtps_cpp\n'}
+[0.786195] (rs485) StdoutLine: {'line': b'[ 74%] Built target rs485__rosidl_typesupport_fastrtps_c\n'}
+[0.798259] (rs485) StdoutLine: {'line': b'[ 74%] Built target rs485\n'}
+[0.801385] (-) TimerEvent: {}
+[0.810168] (rs485) StdoutLine: {'line': b'[ 76%] Built target rs485__py\n'}
+[0.824513] (rs485) StdoutLine: {'line': b'[ 84%] Built target rs485__python\n'}
+[0.838334] (rs485) StdoutLine: {'line': b'[ 89%] Built target rs485__rosidl_typesupport_c__pyext\n'}
+[0.838742] (rs485) StdoutLine: {'line': b'[ 94%] Built target rs485__rosidl_typesupport_introspection_c__pyext\n'}
+[0.840477] (rs485) StdoutLine: {'line': b'[100%] Built target rs485__rosidl_typesupport_fastrtps_c__pyext\n'}
+[0.847351] (rs485) CommandEnded: {'returncode': 0}
+[0.886179] (rs485) JobProgress: {'identifier': 'rs485', 'progress': 'install'}
+[0.893099] (rs485) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/nir/Desktop/rs485/build/rs485'], 'cwd': '/home/nir/Desktop/rs485/build/rs485', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('CONDA_PROMPT_MODIFIER', '(base)'), ('LANGUAGE', 'en_IL:en'), ('USER', 'nir'), ('SSH_AGENT_PID', '2308'), ('ROS_PACKAGE_PATH', '/opt/ros/noetic/share'), ('XDG_SESSION_TYPE', 'x11'), ('ROS_ETC_DIR', '/opt/ros/noetic/etc/ros'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/nir/Desktop/rs485/install/rs485/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib:/opt/ros/noetic/lib'), ('HOME', '/home/nir'), ('CONDA_SHLVL', '1'), ('OLDPWD', '/home/nir/Desktop'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/terminator.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '2119'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('_CE_M', ''), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '25501'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/nir/Desktop/rs485/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'nir'), ('JOURNAL_STREAM', '8:67837'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('PKG_CONFIG_PATH', '/opt/ros/noetic/lib/pkgconfig'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'nir'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('_CE_CONDA', ''), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/foxy/bin:/opt/ros/noetic/bin:/home/nir/anaconda3/bin:/home/nir/anaconda3/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/LevyTech:@/tmp/.ICE-unix/2346,unix/LevyTech:/tmp/.ICE-unix/2346'), ('INVOCATION_ID', '8d6163cc1e09459c90df51758a3b8b84'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('ROSLISP_PACKAGE_DIRECTORIES', ''), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('ROS_ROOT', '/opt/ros/noetic/share/ros'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/nir/Desktop/rs485/install/rs485:/opt/ros/foxy'), ('CONDA_PYTHON_EXE', '/home/nir/anaconda3/bin/python'), ('SHELL', '/bin/bash'), ('TERMINATOR_UUID', 'urn:uuid:e9116272-6e84-4f69-8315-689c75fe69af'), ('QT_ACCESSIBILITY', '1'), ('ROS_MASTER_URI', 'http://localhost:11311'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('CONDA_DEFAULT_ENV', 'base'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/nir/Desktop/rs485/build/rs485'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('CONDA_EXE', '/home/nir/anaconda3/bin/conda'), ('PICO_SDK_PATH', '/opt/pico-sdk'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/nir/Desktop/rs485/install/rs485/lib/python3.9/site-packages:/opt/ros/foxy/lib/python3.8/site-packages:/opt/ros/noetic/lib/python3/dist-packages'), ('CONDA_PREFIX', '/home/nir/anaconda3'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/home/nir/Desktop/rs485/install/rs485:/opt/ros/foxy:/opt/ros/noetic')]), 'shell': False}
+[0.898246] (rs485) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[0.898507] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/ament_index/resource_index/rosidl_interfaces/rs485\n'}
+[0.898691] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485\n'}
+[0.898887] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg\n'}
+[0.899088] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/gripper_status.h\n'}
+[0.899250] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/battery_status.h\n'}
+[0.899329] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail\n'}
+[0.899417] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/gripper_status__functions.h\n'}
+[0.899493] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/gripper_status__type_support.h\n'}
+[0.899578] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/battery_status__type_support.h\n'}
+[0.899921] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/battery_status__functions.h\n'}
+[0.899996] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/battery_status__functions.c\n'}
+[0.900081] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/battery_status__struct.h\n'}
+[0.900183] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/gripper_status__functions.c\n'}
+[0.900257] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/gripper_status__struct.h\n'}
+[0.900345] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/rosidl_generator_c__visibility_control.h\n'}
+[0.900418] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/environment/library_path.sh\n'}
+[0.900492] (rs485) StdoutLine: {'line': b'-- Installing: /home/nir/Desktop/rs485/install/rs485/share/rs485/environment/library_path.dsv\n'}
+[0.900565] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/lib/librs485__rosidl_generator_c.so\n'}
+[0.900638] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485\n'}
+[0.900711] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg\n'}
+[0.900782] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[0.900858] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail\n'}
+[0.900931] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/gripper_status__rosidl_typesupport_fastrtps_c.h\n'}
+[0.901029] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/battery_status__rosidl_typesupport_fastrtps_c.h\n'}
+[0.901144] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/lib/librs485__rosidl_typesupport_fastrtps_c.so\n'}
+[0.901190] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485\n'}
+[0.901228] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg\n'}
+[0.901267] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[0.901305] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail\n'}
+[0.901339] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/battery_status__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[0.901375] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/dds_fastrtps\n'}
+[0.901412] (-) TimerEvent: {}
+[0.901502] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/gripper_status__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[0.901549] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/lib/librs485__rosidl_typesupport_fastrtps_cpp.so\n'}
+[0.901586] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485\n'}
+[0.901621] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg\n'}
+[0.901657] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[0.901690] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail\n'}
+[0.901730] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/gripper_status__type_support.c\n'}
+[0.901765] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/battery_status__rosidl_typesupport_introspection_c.h\n'}
+[0.901799] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/battery_status__type_support.c\n'}
+[0.901837] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/gripper_status__rosidl_typesupport_introspection_c.h\n'}
+[0.901873] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/lib/librs485__rosidl_typesupport_introspection_c.so\n'}
+[0.901909] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/lib/librs485__rosidl_typesupport_c.so\n'}
+[0.901943] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485\n'}
+[0.901989] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg\n'}
+[0.902024] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/gripper_status.hpp\n'}
+[0.902061] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/battery_status.hpp\n'}
+[0.902096] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail\n'}
+[0.902132] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/battery_status__struct.hpp\n'}
+[0.902166] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/battery_status__builder.hpp\n'}
+[0.902201] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/gripper_status__builder.hpp\n'}
+[0.902234] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/gripper_status__traits.hpp\n'}
+[0.902269] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/battery_status__traits.hpp\n'}
+[0.902303] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/gripper_status__struct.hpp\n'}
+[0.902337] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485\n'}
+[0.902372] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg\n'}
+[0.902410] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail\n'}
+[0.902447] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/gripper_status__rosidl_typesupport_introspection_cpp.hpp\n'}
+[0.902484] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/battery_status__type_support.cpp\n'}
+[0.902520] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/gripper_status__type_support.cpp\n'}
+[0.902558] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/battery_status__rosidl_typesupport_introspection_cpp.hpp\n'}
+[0.902593] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/lib/librs485__rosidl_typesupport_introspection_cpp.so\n'}
+[0.902627] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/lib/librs485__rosidl_typesupport_cpp.so\n'}
+[0.902662] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/environment/pythonpath.sh\n'}
+[0.902697] (rs485) StdoutLine: {'line': b'-- Installing: /home/nir/Desktop/rs485/install/rs485/share/rs485/environment/pythonpath.dsv\n'}
+[0.902731] (rs485) StdoutLine: {'line': b'-- Installing: /home/nir/Desktop/rs485/install/rs485/lib/python3.9/site-packages/rs485/__init__.py\n'}
+[0.925971] (rs485) StdoutLine: {'line': b"Compiling '/home/nir/Desktop/rs485/install/rs485/lib/python3.9/site-packages/rs485/__init__.py'...\n"}
+[0.927775] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/lib/python3.9/site-packages/rs485/msg\n'}
+[0.927874] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/lib/python3.9/site-packages/rs485/msg/_battery_status.py\n'}
+[0.927925] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/lib/python3.9/site-packages/rs485/msg/_gripper_status_s.c\n'}
+[0.927959] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/lib/python3.9/site-packages/rs485/msg/__init__.py\n'}
+[0.928127] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/lib/python3.9/site-packages/rs485/msg/_battery_status_s.c\n'}
+[0.928185] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/lib/python3.9/site-packages/rs485/msg/_gripper_status.py\n'}
+[0.928222] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/lib/python3.9/site-packages/rs485/rs485_s__rosidl_typesupport_fastrtps_c.cpython-39-x86_64-linux-gnu.so\n'}
+[0.928823] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/lib/python3.9/site-packages/rs485/rs485_s__rosidl_typesupport_introspection_c.cpython-39-x86_64-linux-gnu.so\n'}
+[0.929100] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/lib/python3.9/site-packages/rs485/rs485_s__rosidl_typesupport_c.cpython-39-x86_64-linux-gnu.so\n'}
+[0.929317] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/lib/librs485__python.so\n'}
+[0.929438] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/msg/GripperStatus.idl\n'}
+[0.929483] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/msg/BatteryStatus.idl\n'}
+[0.929541] (rs485) StdoutLine: {'line': b'-- Installing: /home/nir/Desktop/rs485/install/rs485/share/rs485/msg/GripperStatus.msg\n'}
+[0.929619] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/msg/BatteryStatus.msg\n'}
+[0.929658] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/ament_index/resource_index/package_run_dependencies/rs485\n'}
+[0.929695] (rs485) StdoutLine: {'line': b'-- Installing: /home/nir/Desktop/rs485/install/rs485/share/ament_index/resource_index/parent_prefix_path/rs485\n'}
+[0.929727] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/environment/ament_prefix_path.sh\n'}
+[0.929801] (rs485) StdoutLine: {'line': b'-- Installing: /home/nir/Desktop/rs485/install/rs485/share/rs485/environment/ament_prefix_path.dsv\n'}
+[0.929839] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/environment/path.sh\n'}
+[0.929904] (rs485) StdoutLine: {'line': b'-- Installing: /home/nir/Desktop/rs485/install/rs485/share/rs485/environment/path.dsv\n'}
+[0.929951] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/local_setup.bash\n'}
+[0.929991] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/local_setup.sh\n'}
+[0.930023] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/local_setup.zsh\n'}
+[0.930056] (rs485) StdoutLine: {'line': b'-- Installing: /home/nir/Desktop/rs485/install/rs485/share/rs485/local_setup.dsv\n'}
+[0.930088] (rs485) StdoutLine: {'line': b'-- Installing: /home/nir/Desktop/rs485/install/rs485/share/rs485/package.dsv\n'}
+[0.930151] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/ament_index/resource_index/packages/rs485\n'}
+[0.930186] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/cmake/rs485__rosidl_generator_cExport.cmake\n'}
+[0.930243] (rs485) StdoutLine: {'line': b'-- Installing: /home/nir/Desktop/rs485/install/rs485/share/rs485/cmake/rs485__rosidl_generator_cExport-noconfig.cmake\n'}
+[0.930348] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/cmake/rs485__rosidl_typesupport_introspection_cExport.cmake\n'}
+[0.930401] (rs485) StdoutLine: {'line': b'-- Installing: /home/nir/Desktop/rs485/install/rs485/share/rs485/cmake/rs485__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[0.930560] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/cmake/rs485__rosidl_typesupport_cExport.cmake\n'}
+[0.930593] (rs485) StdoutLine: {'line': b'-- Installing: /home/nir/Desktop/rs485/install/rs485/share/rs485/cmake/rs485__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[0.930695] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/cmake/rs485__rosidl_generator_cppExport.cmake\n'}
+[0.930758] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/cmake/rs485__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[0.930792] (rs485) StdoutLine: {'line': b'-- Installing: /home/nir/Desktop/rs485/install/rs485/share/rs485/cmake/rs485__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[0.930868] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/cmake/rs485__rosidl_typesupport_cppExport.cmake\n'}
+[0.930924] (rs485) StdoutLine: {'line': b'-- Installing: /home/nir/Desktop/rs485/install/rs485/share/rs485/cmake/rs485__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[0.930970] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/cmake/rosidl_cmake-extras.cmake\n'}
+[0.931023] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[0.931101] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[0.931137] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[0.931169] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[0.931202] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[0.931259] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[0.931290] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/cmake/rs485Config.cmake\n'}
+[0.931320] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/cmake/rs485Config-version.cmake\n'}
+[0.931350] (rs485) StdoutLine: {'line': b'-- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/package.xml\n'}
+[0.932890] (rs485) CommandEnded: {'returncode': 0}
+[0.986014] (rs485) JobEnded: {'identifier': 'rs485', 'rc': 0}
+[0.986763] (-) EventReactorShutdown: {}

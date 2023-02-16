@@ -1,0 +1,29 @@
+communication:
+  
+  serial_port: "/dev/ttyTHS0"
+  frequency: 30
+  baudrate: 115200
+  DE_pin: 12
+  RE_pin: 13
+  timeout: 0.001
+  software_flow_control: False     
+  clear_to_send: False     
+  data_terminal_ready: False       
+  writeTimeout: 0
+
+gripper:
+  id: 1 #right
+  type: Gripper
+
+gripper:
+  id: 2 #left
+  type: Gripper
+
+battery:
+  id: 3 #left
+  type: Battery
+
+battery:
+  id: 4 #right
+  type: Battery
+

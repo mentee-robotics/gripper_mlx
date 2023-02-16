@@ -1,0 +1,2 @@
+Invoking command in '/home/nir/Desktop/rs485/build/rs485': CMAKE_PREFIX_PATH=/opt/ros/foxy:${CMAKE_PREFIX_PATH} CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake /home/nir/Desktop/rs485 -DCMAKE_INSTALL_PREFIX=/home/nir/Desktop/rs485/install/rs485
+Invoked command in '/home/nir/Desktop/rs485/build/rs485' returned '1': CMAKE_PREFIX_PATH=/opt/ros/foxy:${CMAKE_PREFIX_PATH} CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake /home/nir/Desktop/rs485 -DCMAKE_INSTALL_PREFIX=/home/nir/Desktop/rs485/install/rs485
