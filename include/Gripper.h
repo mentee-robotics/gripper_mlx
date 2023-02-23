@@ -4,6 +4,7 @@
 class Gripper {
   public:
     Gripper(int IN1,int IN2,int SLEEP,int PMODE);
+    void executeCommand(eCommands _in_command, void *_payload, int _payload_size);
     float pidStep(int target);
     void setMotor(int dir, int pwmVal, int in1, int in2);
     float mapfloat(float x, float in_min, float in_max, float out_min, float out_max);

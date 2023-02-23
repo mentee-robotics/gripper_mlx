@@ -5,6 +5,41 @@
 
 #include <cstddef>
 
+enum eEndpoints{
+    eMLX,
+    eGripper,
+    eBattery
+}
+
+enum eCommands{
+    //Common Commands
+    eEnable,
+    eReset,
+
+    //MLX Commands
+    eSetMagField,
+
+    //Gripper Commands
+    eMoveToPos,
+
+    //Battery Commands
+    eExplodeBattery
+}
+
+class CommandFromHost{
+    public:
+
+    CommandFromHost():_payload(nullptr){};
+    ~CommandFromHost(){
+        if(!_payload)
+            delete(_payload);
+    }
+    eEndpoints _endpoint;
+    eCommands _command;
+    void *_payload;
+    int _payload_size;
+}
+
 class RS485Comm {
     public:
     RS485Comm(SoftwareSerial *Serial);

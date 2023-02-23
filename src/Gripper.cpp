@@ -1,5 +1,6 @@
 // Gripper.cpp
 #include "../include/Gripper.h"
+#include "Configuration.h"
 #include <Arduino.h>
 
 Gripper::Gripper(int IN1,int IN2,int SLEEP,int PMODE) {
@@ -80,3 +81,8 @@ float Gripper::measureCurrent(int cur_pin){
   return current;
 }
 
+void Gripper::executeCommand(eCommands _in_command, void *_payload, int _payload_size){
+  if(_in_command == eMoveToPos){
+    //move to position
+  }
+}

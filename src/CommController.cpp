@@ -132,6 +132,16 @@ int RS485Comm::ReadFromHost() {
                 // Serial.println(byte_rc);    
                 hostReceived[i] = byte_rc;
             }
+            //We have a command
+            CommandFromHost new_command;
+            //it is hardcoded for now ... but parse it from the command itself
+            //do the sanity check
+            new_command._endpoint = eGripper;
+            new_command._command = eMoveToPos;
+            new_command._payload = new int;
+            new_command._payload_size = sizeof(int);
+            *((int&)new_command._payload) = hostReceived[2];
+            distribute(new_command);
             address = hostReceived[1];
             if (address == device_address) {
                  wanted_pos = hostReceived[2];

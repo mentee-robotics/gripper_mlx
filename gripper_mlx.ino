@@ -29,6 +29,13 @@ void setup() {
   comms.RS485Comm_setup();
 } 
 
+void distribute(CommandFromHost _in_command){
+  if(_in_command._endpoint == eGripper){
+    
+  }
+
+}
+
 //Main Loop
 void loop() {
 //Communicationloop - 30Hz
