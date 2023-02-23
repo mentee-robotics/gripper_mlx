@@ -15,7 +15,7 @@ void Gripper::init_gripper(){
   pinMode(_PMODE,OUTPUT);
   digitalWrite(_SLEEP,HIGH);
   digitalWrite(_PMODE,HIGH);
-  Kp =0.04;
+  Kp =0.15;//faster gripper 0.04
   Ki =0.001;
   Kd =0;
   lastError=0;         // previous error value
@@ -23,14 +23,13 @@ void Gripper::init_gripper(){
   derivative=0;        // derivative of error over time
   // output=0;      // output value to control motor
   dir=-1;
-  targetPosition = 5; 
+  targetPosition = 50; 
   ActualPosition = 0;
 }
 float Gripper::pidStep(int target) {
   
   targetPosition=target;
   ActualPosition=mapfloat(analogRead(A0),maxposition,minposition,0,100);
-    Serial.println(ActualPosition);
 
   // ActualPosition=analogRead(A0);
   float error =  targetPosition - ActualPosition;
@@ -74,9 +73,9 @@ void Gripper::moveMotorSlow(int time,int dir)
   while(millis() -enter<time)
   {
   setMotor(dir,1,_IN1,_IN2);  
-  delay(20);
+  delay(75);//faster gripper 20
   setMotor(dir,0,_IN1,_IN2);  
-  delay(10);
+  delay(5);//faster gripper 10
   }
 }
 void Gripper::calibrateGripper()
@@ -86,11 +85,13 @@ int gripperOpenDelay = 10; // milliseconds
 int minPos = 1023; // maximum value of analogRead
 int maxPos = 0; // minimum value of analogRead
 
- moveMotorSlow(500,1);
+ moveMotorSlow(1500,1);
   int pos = analogRead(A0);
   int prevPos = pos;
   unsigned long stuckStart = millis();
-  while (millis() - stuckStart < gripperOpenDelay) {
+    int now=millis();
+
+  while (millis() - stuckStart < gripperOpenDelay && millis()-now<1000) {
     prevPos = pos;
     pos = analogRead(A0);
     if (pos == prevPos) {
@@ -108,13 +109,13 @@ int maxPos = 0; // minimum value of analogRead
   delay(200);
 
   // Move the gripper in the other direction until it's mechanically stuck
- moveMotorSlow(500,-1);
+ moveMotorSlow(1500,-1);
 
   pos = analogRead(A0);
   prevPos = pos;
   stuckStart = millis();
-  int now=millis();
-  while (millis() - stuckStart < gripperOpenDelay && millis()-now<600) {
+  now=millis();
+  while (millis() - stuckStart < gripperOpenDelay && millis()-now<1500) {
     prevPos = pos;
     pos = analogRead(A0);
     if (pos == prevPos) {
@@ -133,7 +134,12 @@ int maxPos = 0; // minimum value of analogRead
   delay(200);
   maxposition=maxPos;
   minposition=minPos;
+    now=millis();
 
+  while(ActualPosition!=50 && millis()-now<1500)
+  {
+  pidStep(50);//First position
+  }
 Serial.println("Finished calibration succesfully");
 
 }
