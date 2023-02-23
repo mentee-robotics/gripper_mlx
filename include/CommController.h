@@ -54,7 +54,7 @@ class RS485Comm {
     byte byte_rc{};
     char rc;
     int address;
-    const int device_address = 1;
+    const int device_address = 2;
     char endMarker = '\n';
     int byte_header = 170;
     int hostReceived[4];
