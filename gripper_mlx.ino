@@ -58,8 +58,7 @@ void loop() {
   //Fast Loop - 500-1KHz
   if (micros() - FAST_LOOP_PREV > FAST_LOOP_T )
   {
-  // output=grip.pidStep(target);
-
+  output=grip.pidStep(target);
   FAST_LOOP_PREV=micros();
   sampleCount++;
   }

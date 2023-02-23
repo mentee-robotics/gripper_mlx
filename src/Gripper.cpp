@@ -29,11 +29,11 @@ void Gripper::init_gripper(){
 float Gripper::pidStep(int target) {
   
   targetPosition=target;
-  // Serial.println(analogRead(A0));
   ActualPosition=mapfloat(analogRead(A0),maxposition,minposition,0,100);
+    Serial.println(ActualPosition);
+
   // ActualPosition=analogRead(A0);
   float error =  targetPosition - ActualPosition;
-  Serial.print(error);
   // update the integral and derivative terms
   integral +=error;
   if (integral >= 100) integral = 100;
@@ -113,7 +113,8 @@ int maxPos = 0; // minimum value of analogRead
   pos = analogRead(A0);
   prevPos = pos;
   stuckStart = millis();
-  while (millis() - stuckStart < gripperOpenDelay ) {
+  int now=millis();
+  while (millis() - stuckStart < gripperOpenDelay && millis()-now<600) {
     prevPos = pos;
     pos = analogRead(A0);
     if (pos == prevPos) {
@@ -133,11 +134,8 @@ int maxPos = 0; // minimum value of analogRead
   maxposition=maxPos;
   minposition=minPos;
 
-  // Print the min and max positions
-  Serial.print("Min position: ");
-  Serial.println(minPos);
-  Serial.print("Max position: ");
-  Serial.println(maxPos);
+Serial.println("Finished calibration succesfully");
+
 }
 
 float Gripper::mapfloat(float x, float in_min, float in_max, float out_min, float out_max) {
