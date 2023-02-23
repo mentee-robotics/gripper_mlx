@@ -8,9 +8,14 @@ class Gripper {
     void setMotor(int dir, int pwmVal, int in1, int in2);
     float mapfloat(float x, float in_min, float in_max, float out_min, float out_max);
     float measureCurrent(int cur_pin);
+    void calibrateGripper();
     void init_gripper();
+    void moveMotorSlow(int time,int dir);
+
     int targetPosition; 
     int ActualPosition; 
+    int maxposition;
+    int minposition;
 
   private:
     float Kp;
