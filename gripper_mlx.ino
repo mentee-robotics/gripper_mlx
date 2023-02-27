@@ -1,7 +1,7 @@
-#include "include/Gripper.h"
-#include "include/MLX90393.h"
 #include "include/Pinout.h"
 #include "include/Configuration.h"
+#include "include/Gripper.h"
+#include "include/MLX90393.h"
 #include "include/CommController.h"
 #include <SoftwareSerial.h>
 
@@ -19,18 +19,30 @@ int target;
 SoftwareSerial mySerial(rx_pin,tx_pin);
 Gripper grip(IN1,IN2,SLEEP,PMODE);
 RS485Comm comms(&mySerial);
-MLX90393 MagneticSensor(Addr);
+MLX90393 MagneticSensor;
+
+void distribute(CommandFromHost i_command){
+  if(i_command._endpoint == eGripper)
+    grip.distribute(i_command,&mySerial);
+  else if(i_command._endpoint == eMLX)
+    MagneticSensor.distribute(i_command,&mySerial);
+  else
+    mySerial.write("E4");
+}
 
 void setup() {
   Serial.begin(115200);
   grip.init_gripper();
   grip.calibrateGripper();
-  MagneticSensor.Setup(Addr);
+  MagneticSensor.Setup();
   comms.RS485Comm_setup();
+  comms.setCallback(&distribute);  
+
 } 
 
 //Main Loop
 void loop() {
+
 //Communicationloop - 30Hz
   if (millis() - SLOW_LOOP_PREV > SLOW_LOOP_T )
   {
@@ -40,7 +52,7 @@ void loop() {
     comms.mlx_z=MagneticSensor.z;
     comms.actual_pos=grip.ActualPosition;
     comms.current=grip.measureCurrent(A2);
-    target=comms.ReadFromHost();
+    comms.ReadFromHost();
     if(VERBOSE){
     Serial.print("  Mlx_x ");Serial.print(MagneticSensor.x);
     Serial.print("  Mlx_y ");Serial.print(MagneticSensor.y);
@@ -55,7 +67,7 @@ void loop() {
   //Fast Loop - 500-1KHz
   if (micros() - FAST_LOOP_PREV > FAST_LOOP_T )
   {
-  output=grip.pidStep(target);
+  output=grip.pidStep(comms.actual_pos);
   FAST_LOOP_PREV=micros();
   sampleCount++;
   }

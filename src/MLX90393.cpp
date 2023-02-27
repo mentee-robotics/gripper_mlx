@@ -1,21 +1,20 @@
 // MLX90393.cpp
 #include "../include/MLX90393.h"
-#include <Arduino.h>
-#include <Wire.h>
 
-MLX90393::MLX90393(unsigned char Addr) {
+extern RS485Comm comms;
+MLX90393::MLX90393() {
   x=0;
   y=0;
   z=0;
-  _Addr=Addr;
+  _Addr=0x18;
 
 }
-void MLX90393::Setup(unsigned char Addr) {
+void MLX90393::Setup() {
 
 //i2c setup
   Wire1.begin();
   // Start I2C Transmission
-  Wire1.beginTransmission(Addr);
+  Wire1.beginTransmission(_Addr);
   // Select Write register command
   Wire1.write(0x60);
   // Set AH = 0x00, BIST disabled
@@ -28,7 +27,7 @@ void MLX90393::Setup(unsigned char Addr) {
   Wire1.endTransmission();
   
   // Request 1 byte of data
-  Wire1.requestFrom(Addr, 1);
+  Wire1.requestFrom(_Addr, 1);
   
   // Read status byte
   if(Wire1.available() == 1)
@@ -78,3 +77,21 @@ void MLX90393::Read() {
   y = data[3] * 256 + data[4];
   z = data[5] * 256 + data[6];
 }
+void MLX90393::distribute(CommandFromHost i_command,SoftwareSerial *Serial){
+  if(i_command._command==eGetMagField)
+  {
+  Read();
+  int readings[3];
+  ResponseToHost res;
+  res._endpoint=eGripper;
+  res._response=eConfirm;
+  res._payload_size = sizeof(int) * 3;
+  res._payload = new char[res._payload_size];
+  readings[0]=x;
+  readings[1]=y;
+  readings[2]=z;
+  memcpy(res._payload, (char*)readings, sizeof(int) * 3);
+  comms.sendRes(res);
+  }
+}
+

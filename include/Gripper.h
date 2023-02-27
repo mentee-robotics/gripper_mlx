@@ -1,9 +1,10 @@
 #ifndef Gripper_h
 #define Gripper_h
-
+#include "../include/Configuration.h"
+#include "../include/CommController.h"
 class Gripper {
   public:
-    Gripper(int IN1,int IN2,int SLEEP,int PMODE);
+    Gripper(int in1,int in2,int sleep,int pmode);
     float pidStep(int target);
     void setMotor(int dir, int pwmVal, int in1, int in2);
     float mapfloat(float x, float in_min, float in_max, float out_min, float out_max);
@@ -11,6 +12,8 @@ class Gripper {
     void calibrateGripper();
     void init_gripper();
     void moveMotorSlow(int time,int dir);
+    void executeCommand(eCommands _in_command, void *_payload, int _payload_size);
+    void distribute(CommandFromHost _in_command,SoftwareSerial *Serial);
 
     int targetPosition; 
     int ActualPosition; 

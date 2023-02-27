@@ -1,11 +1,13 @@
 // Gripper.cpp
 #include "../include/Gripper.h"
-#include <Arduino.h>
-Gripper::Gripper(int IN1,int IN2,int SLEEP,int PMODE) {
-  _IN1=IN1;
-  _IN2=IN2;
-  _SLEEP=SLEEP;
-  _PMODE=PMODE;
+
+extern RS485Comm comms;
+
+Gripper::Gripper(int in1,int in2,int sleep,int pmode) {
+  _IN1=in1;
+  _IN2=in2;
+  _SLEEP=sleep;
+  _PMODE=pmode;
 
 }
 void Gripper::init_gripper(){
@@ -155,3 +157,72 @@ float Gripper::measureCurrent(int cur_pin){
   return current;
 }
 
+void Gripper::distribute(CommandFromHost _in_command,SoftwareSerial *Serial){
+if(_in_command._command == eMoveToPos){
+    pidStep(*(int*)&(_in_command._payload));
+    ResponseToHost res;
+  res._endpoint=eGripper;
+    res._response=eConfirm;
+  res._payload_size = sizeof(int);
+  res._payload = new char[sizeof(int)];
+  *(int*)res._payload = 1003;
+  comms.sendRes(res);
+  }
+else if(_in_command._command == eGetPos){
+  ResponseToHost res;
+  res._endpoint=eGripper;
+    res._response=eData;
+  res._payload_size = sizeof(int);
+  res._payload = new char[sizeof(int)];
+  *(int*)res._payload = ActualPosition;
+  comms.sendRes(res);
+}
+else if(_in_command._command == eGetCurrent){
+  ResponseToHost res;
+  res._endpoint=eGripper;
+    res._response=eData;
+  res._payload_size = sizeof(float);
+  res._payload = new char[sizeof(float)];
+  *(float*)res._payload = measureCurrent(A2);
+  comms.sendRes(res);
+}
+else if(_in_command._command == eEnable){
+  digitalWrite(SLEEP,HIGH);
+    ResponseToHost res;
+  res._endpoint=eGripper;
+  res._response=eConfirm;
+  res._payload_size = sizeof(int);
+  res._payload = new char[sizeof(int)];
+  *(int*)res._payload = 1000;
+  comms.sendRes(res);
+}
+else if(_in_command._command == eDisable){
+    digitalWrite(_SLEEP,LOW);
+    ResponseToHost res;
+  res._endpoint=eGripper;
+    res._response=eConfirm;
+  res._payload_size = sizeof(int);
+  res._payload = new char[sizeof(int)];
+  *(int*)res._payload = 1001;
+  comms.sendRes(res);
+}
+else if(_in_command._command == eReset){
+    ResponseToHost res;
+  res._endpoint=eGripper;
+    res._response=eConfirm;
+  res._payload_size = sizeof(int);
+  res._payload = new char[sizeof(int)];
+  *(int*)res._payload = 999;
+  comms.sendRes(res);
+}
+else if(_in_command._command == eCalibrate){
+  calibrateGripper();
+    ResponseToHost res;
+  res._endpoint=eGripper;
+  res._response=eConfirm;
+  res._payload_size = sizeof(int);
+  res._payload = new char[sizeof(int)];
+  *(int*)res._payload = 1002;
+  comms.sendRes(res);
+}
+}
