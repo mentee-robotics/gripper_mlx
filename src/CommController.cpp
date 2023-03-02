@@ -1,5 +1,4 @@
 #include "../include/CommController.h"
-#include <thread>
 
 RS485Comm::RS485Comm(SoftwareSerial *Serial){
     mySerial=Serial;
@@ -13,7 +12,7 @@ void RS485Comm::RS485Comm_setup(){
 }
 
 void RS485Comm:: prepare_transmit() {
-    mySerial->flush();
+    // mySerial->flush();
     digitalWrite(DE, HIGH); 
     digitalWrite(RE, HIGH);
 }
@@ -53,12 +52,12 @@ int RS485Comm::count_ones(byte array[], int length) {
 
 void RS485Comm::ReadFromHost() {
     prepare_receive();
-
     byte byte_rc;
     int i=0;
     while(mySerial->available() && i<2)
     {
         byte_rc = mySerial->read();
+   
         if(byte_rc ==170)
         {    
             i++;
@@ -69,32 +68,41 @@ void RS485Comm::ReadFromHost() {
         delay(0.001);
     }
     
-    while (mySerial->available()<4) 
-    { 
-        delay(0.001);
-    }
+    // while (mySerial->available()<6) 
+    // { 
+    //     delay(0.001);
+    // }
     CommandFromHost new_command;
-    byte address=mySerial->read();
-    new_command._endpoint=(eEndpoints)mySerial->read();
-    new_command._command=(eCommands)mySerial->read();
-    new_command._payload_size=(int)mySerial->read();
-    new_command._payload = new char[new_command._payload_size];
-    for(int j=0;j<new_command._payload_size;j++)
+    if (mySerial->available()>=6)
     {
-        new_command._payload[j] = mySerial->read();
-    }   
-    byte tail=mySerial->read();
-    if (tail!=10 || address!=device_address)
+        byte address=mySerial->read();
+        // Serial.print(address);Serial.print(",");
+        new_command._endpoint=(eEndpoints)mySerial->read();
+        // Serial.print(new_command._endpoint);Serial.print(",");
+        new_command._command=(eCommands)mySerial->read();
+        // Serial.print(new_command._command);Serial.print(",");
+        new_command._payload_size=(int)mySerial->read();
+        // Serial.print(new_command._payload_size);Serial.print(",");
+        byte payload=mySerial->read();
+        new_command._payload[0]=payload;
+        // Serial.print((uint8_t)payload);Serial.print(",");
+        char tail=mySerial->read();
+        // Serial.print((int)tail);Serial.println();
+
+    if ((tail)!=99 || (address)!=device_address)
     {
         return;
     }
     _distribute_callback(new_command);   
-
+    }
     }
 
-void RS485Comm:: sendRes2(ResponseToHost res)
-{
+void RS485Comm:: sendRes(ResponseToHost res)
+{    
+    delay(3);
+
     prepare_transmit();
+
     message_array[0]=packet_header;
     message_array[1]=packet_header;
     message_array[2]=res._endpoint;
@@ -111,15 +119,8 @@ void RS485Comm:: sendRes2(ResponseToHost res)
     message_array[6+res._payload_size] = crc_2;
     message_array[7+res._payload_size] = tail;
     
-    delay(3);
 
     mySerial->write(message_array, 8+res._payload_size);
-}
-
-void RS485Comm:: sendRes(ResponseToHost res)
-{
-   std::thread *t;//(&RS485Comm::sendRes2, this);
-  // t.detach();
 }
 
 

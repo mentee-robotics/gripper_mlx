@@ -5,9 +5,12 @@
 #include <Arduino.h>
 #include <Wire.h>
 #include <functional>
-#include <thread>
 #include <SoftwareSerial.h>
+#include <FreeRTOS.h>
+#include <task.h>
 #include "../include/Pinout.h"
+#include <string>
+#include <memory>
 
 #define VERBOSE false
 
@@ -45,28 +48,24 @@ enum eCommands{
 class CommandFromHost{
     public:
 
-    CommandFromHost():_payload(nullptr){};
+    CommandFromHost(){};
     ~CommandFromHost(){
-        if(_payload)
-            delete(_payload);
     }
     eEndpoints _endpoint;
     eCommands _command;
-    char *_payload;
+    char _payload[20];
     int _payload_size;
 };
 
 class ResponseToHost{
    public:
 
-   ResponseToHost():_payload(nullptr){};
+   ResponseToHost(){};
     ~ResponseToHost(){
-        if(_payload)
-            delete(_payload);
     }
     eEndpoints _endpoint;
     eResponse _response;
-    char *_payload;
+    char _payload[20];
     int _payload_size;
 };
 

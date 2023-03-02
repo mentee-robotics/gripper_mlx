@@ -28,9 +28,8 @@ void Gripper::init_gripper(){
   targetPosition = 50; 
   ActualPosition = 0;
 }
-float Gripper::pidStep(int target) {
+float Gripper::pidStep() {
   
-  targetPosition=target;
   ActualPosition=mapfloat(analogRead(A0),maxposition,minposition,0,100);
 
   // ActualPosition=analogRead(A0);
@@ -140,7 +139,8 @@ int maxPos = 0; // minimum value of analogRead
 
   while(ActualPosition!=50 && millis()-now<1500)
   {
-  pidStep(50);//First position
+  targetPosition=50;
+  pidStep();//First position
   }
 Serial.println("Finished calibration succesfully");
 
@@ -157,23 +157,24 @@ float Gripper::measureCurrent(int cur_pin){
   return current;
 }
 
-void Gripper::distribute(CommandFromHost _in_command,SoftwareSerial *Serial){
+void Gripper::distribute(CommandFromHost _in_command,SoftwareSerial *Ser){
+
 if(_in_command._command == eMoveToPos){
-    pidStep(*(int*)&(_in_command._payload));
-    ResponseToHost res;
+  int target;
+  target=int(_in_command._payload[0]);
+  targetPosition=target;
+  ResponseToHost res;
   res._endpoint=eGripper;
-    res._response=eConfirm;
+  res._response=eConfirm;
   res._payload_size = sizeof(int);
-  res._payload = new char[sizeof(int)];
-  *(int*)res._payload = 1003;
+  *(int*)res._payload = 101;
   comms.sendRes(res);
   }
 else if(_in_command._command == eGetPos){
   ResponseToHost res;
   res._endpoint=eGripper;
-    res._response=eData;
+  res._response=eData;
   res._payload_size = sizeof(int);
-  res._payload = new char[sizeof(int)];
   *(int*)res._payload = ActualPosition;
   comms.sendRes(res);
 }
@@ -182,7 +183,6 @@ else if(_in_command._command == eGetCurrent){
   res._endpoint=eGripper;
     res._response=eData;
   res._payload_size = sizeof(float);
-  res._payload = new char[sizeof(float)];
   *(float*)res._payload = measureCurrent(A2);
   comms.sendRes(res);
 }
@@ -192,8 +192,7 @@ else if(_in_command._command == eEnable){
   res._endpoint=eGripper;
   res._response=eConfirm;
   res._payload_size = sizeof(int);
-  res._payload = new char[sizeof(int)];
-  *(int*)res._payload = 1000;
+  *(int*)res._payload = 102;
   comms.sendRes(res);
 }
 else if(_in_command._command == eDisable){
@@ -202,8 +201,7 @@ else if(_in_command._command == eDisable){
   res._endpoint=eGripper;
     res._response=eConfirm;
   res._payload_size = sizeof(int);
-  res._payload = new char[sizeof(int)];
-  *(int*)res._payload = 1001;
+  *(int*)res._payload = 103;
   comms.sendRes(res);
 }
 else if(_in_command._command == eReset){
@@ -211,8 +209,7 @@ else if(_in_command._command == eReset){
   res._endpoint=eGripper;
     res._response=eConfirm;
   res._payload_size = sizeof(int);
-  res._payload = new char[sizeof(int)];
-  *(int*)res._payload = 999;
+  *(int*)res._payload = 104;
   comms.sendRes(res);
 }
 else if(_in_command._command == eCalibrate){
@@ -221,8 +218,12 @@ else if(_in_command._command == eCalibrate){
   res._endpoint=eGripper;
   res._response=eConfirm;
   res._payload_size = sizeof(int);
-  res._payload = new char[sizeof(int)];
-  *(int*)res._payload = 1002;
+  *(int*)res._payload = 105;
   comms.sendRes(res);
 }
+else{
+  comms.prepare_transmit();
+  Ser->write("E5");
+}
+
 }

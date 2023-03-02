@@ -15,8 +15,6 @@ class RS485Comm {
     int count_ones(byte array[], int length);
     void ReadFromHost();
     void sendRes(ResponseToHost res);
-    void sendRes2(ResponseToHost res);
-
     void setCallback(std::function<void(CommandFromHost)> i_callback){
         _distribute_callback = i_callback;
     }
@@ -61,7 +59,7 @@ class RS485Comm {
     byte byte_rc{};
     char rc;
     int address;
-    const int device_address = 1;
+    int device_address = 1;
     char endMarker = '\n';
     int byte_header = 170;
     int hostReceived[4];

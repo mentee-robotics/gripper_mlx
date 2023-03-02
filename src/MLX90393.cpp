@@ -86,7 +86,6 @@ void MLX90393::distribute(CommandFromHost i_command,SoftwareSerial *Serial){
   res._endpoint=eGripper;
   res._response=eConfirm;
   res._payload_size = sizeof(int) * 3;
-  res._payload = new char[res._payload_size];
   readings[0]=x;
   readings[1]=y;
   readings[2]=z;
