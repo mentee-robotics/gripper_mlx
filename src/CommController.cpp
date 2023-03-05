@@ -51,7 +51,6 @@ int RS485Comm::count_ones(byte array[], int length) {
 }
 
 void RS485Comm::ReadFromHost() {
-    prepare_receive();
     byte byte_rc;
     int i=0;
     while(mySerial->available() && i<2)
@@ -121,6 +120,8 @@ void RS485Comm:: sendRes(ResponseToHost res)
     
 
     mySerial->write(message_array, 8+res._payload_size);
+    delay(1);
+    prepare_receive();
 }
 
 

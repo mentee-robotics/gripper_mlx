@@ -22,7 +22,6 @@ int SLOW_LOOP_PREV =0;
 int FAST_LOOP_PREV =0;
 int target; 
 
-TaskHandle_t readTaskHandle;
 SoftwareSerial mySerial(rx_pin,tx_pin);
 Gripper grip(IN1,IN2,SLEEP,PMODE);
 RS485Comm comms(&mySerial);
@@ -41,7 +40,11 @@ void distribute(CommandFromHost i_command){
     mySerial.write("E4");
   }
 }
-
+void read()
+{
+comms.ReadFromHost();
+sampleCount++;
+}
 void setup() {
   Serial.begin(115200);
   grip.init_gripper();
@@ -49,16 +52,16 @@ void setup() {
   MagneticSensor.Setup();
   comms.RS485Comm_setup();
   comms.setCallback(&distribute); 
-  Read->onRun([](){comms.ReadFromHost();});
-	Read->setInterval(10);
+  Read->onRun(read);
 	controll.add(Read);
 } 
 
 //Main Loop
 void loop() {
-  controll.run();
     if (millis() - SLOW_LOOP_PREV > SLOW_LOOP_T )
   {
+      controll.run();
+
     if(VERBOSE){
     Serial.print(MagneticSensor.x);
     Serial.print(",");Serial.print(MagneticSensor.y);
@@ -66,6 +69,7 @@ void loop() {
     Serial.println();
     }
     SLOW_LOOP_PREV=millis();
+
   }  
 
   //Fast Loop - 500-1KHz
@@ -73,7 +77,6 @@ void loop() {
   {
   grip.pidStep();
   FAST_LOOP_PREV=micros();
-  sampleCount++;
   }
 
   //Print Samplerate loop 1Hz
@@ -81,6 +84,8 @@ void loop() {
   {
     sampleRate=sampleCount;
     previous=millis();
+    Serial.println(sampleRate);
+
     sampleCount=0;    
   }  
 }

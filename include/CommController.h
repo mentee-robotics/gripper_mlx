@@ -37,8 +37,8 @@ class RS485Comm {
 
     byte message_array[16];
     byte current_array[4];
-    byte packet_header{0b11111111};
-    byte tail{0b11111111};
+    byte packet_header{0b11001000};
+    byte tail{0b11000111};
     byte actual_pos1{};
     byte actual_pos2{};
     byte current_1{};
@@ -59,7 +59,7 @@ class RS485Comm {
     byte byte_rc{};
     char rc;
     int address;
-    int device_address = 1;
+    int device_address = 2;
     char endMarker = '\n';
     int byte_header = 170;
     int hostReceived[4];

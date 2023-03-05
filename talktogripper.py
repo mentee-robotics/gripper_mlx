@@ -6,6 +6,32 @@ import Jetson.GPIO as GPIO
 import random
 from sys import getsizeof
 import sys
+from enum import Enum
+
+class eResponse(Enum):
+    eConfirm = 0
+    eData = 1
+    eError = 2
+
+class eEndpoints(Enum):
+    eGrippe =0
+    eMLX=1
+
+class eCommands(Enum):
+     #Common Commands
+    eEnable=0
+    eDisable=1
+    eReset=2
+    eCalibrate=3
+
+    #MLX Commands
+    eGetMagField=4
+
+    #Gripper Commands
+    eMoveToPos=5
+    eGetPos=6
+    eGetCurrent=7
+
 
 class TalkToGripper:
     
@@ -35,7 +61,7 @@ class TalkToGripper:
         ######### receive message ######
         self.received_message = []
         self.expected_header = 0b11111111
-        self.expected_tail = b'\x0A'
+        self.expected_tail = 0b11000111
         
         self.mlx_x = 0
         self.mlx_y = 0
@@ -86,39 +112,35 @@ class TalkToGripper:
     def process_data(self):
         data = self.received_message
         
-        if len(data) > 15:
+        if len(data) >=12:
         
-            byte_header = data[0]
-            byte_actual_pos = [data[1],data[2]]
-            byte_current = [data[6],data[5],data[4],data[3]]
-            byte_mlx_X = [data[7],data[8]]
-            byte_mlx_y = [data[9],data[10]]
-            byte_mlx_z = [data[11],data[12]]
-            byte_crc = [data[13],data[14]]
-            byte_tail = data[15]
-
-            actual_pos = struct.unpack('>h', bytes(byte_actual_pos))[0]
-            current = struct.unpack('>f', bytes(byte_current))[0]
-            mlx_x = struct.unpack('>h', bytes(byte_mlx_X))[0]
-            mlx_y = struct.unpack('>h', bytes(byte_mlx_y))[0]
-            mlx_z = struct.unpack('>h', bytes(byte_mlx_z))[0]
-            crc = struct.unpack('>h', bytes(byte_crc))[0]
+            byte_header1 = data[0]
+            byte_header2 = data[1]
+            endpoint= data[2] 
+            reponse=data[3]
+            payload_size=data[4]
+            payload=data[5:5+payload_size]
+            crc1=data[5+payload_size]
+            crc2=data[6+payload_size]
+            tail=data[7+payload_size]
+            print(data)
+            # crc = struct.unpack('>h', bytes(byte_crc))[0]
 
             # find the crc of the message
-            data_without_crc = bytes([data[0],data[1],data[2],data[3],data[4],data[5],data[6],data[7],data[8],data[9],data[10],data[11],data[12]])
-            calculated_crc = self.calculate_crc(data_without_crc)
+            # data_without_crc = bytes([data[-3]])
+            # calculated_crc = self.calculate_crc(data_without_crc)
             
-            # check integrity of message by comparing header, tail and crc:
-            message_integrity = self.check_message_integrity(byte_header, byte_tail, crc , calculated_crc)#Not Working
+            # # check integrity of message by comparing header, tail and crc:
+            # message_integrity = self.check_message_integrity(byte_header1,byte_header2, byte_tail, crc , calculated_crc)#Not Working
             
-            if message_integrity:
-                self.mlx_x = mlx_x
-                self.mlx_y = mlx_y
-                self.mlx_z = mlx_z
-                self.actual_pos = actual_pos
-                self.current = current
-            print(self.wanted)
-            print(f"current: {current} actual_pos: {actual_pos} mlx-x {mlx_x} mlx-y {mlx_y} mlx-z {mlx_z}")
+            # if message_integrity:
+            #     self.mlx_x = mlx_x
+            #     self.mlx_y = mlx_y
+            #     self.mlx_z = mlx_z
+            #     self.actual_pos = actual_pos
+            #     self.current = current
+            # print(self.wanted)
+            # print(f"current: {current} actual_pos: {actual_pos} mlx-x {mlx_x} mlx-y {mlx_y} mlx-z {mlx_z}")
 
             
     def calculate_crc(self, byte_list):  # counting the ones in the byte array
@@ -159,5 +181,7 @@ if __name__ == '__main__':
     i=0
     while True:
         gripper_right.go_to(wanted_gripper="right",wanted_position=random.randint(0,100))
+        time.sleep(0.0001)
+        gripper_right.receive_data()
         time.sleep(1/freq)
 
