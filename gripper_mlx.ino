@@ -84,7 +84,7 @@ void loop() {
   {
     sampleRate=sampleCount;
     previous=millis();
-    Serial.println(sampleRate);
+    // Serial.println(sampleRate);
 
     sampleCount=0;    
   }  

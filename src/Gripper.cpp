@@ -164,7 +164,7 @@ if(_in_command._command == eMoveToPos){
   target=int(_in_command._payload[0]);
   targetPosition=target;
   ResponseToHost res;
-  res._endpoint=eGripper;
+  res._endpoint=eHost;
   res._response=eConfirm;
   res._payload_size = sizeof(int);
   *(int*)res._payload = 101;
@@ -172,7 +172,7 @@ if(_in_command._command == eMoveToPos){
   }
 else if(_in_command._command == eGetPos){
   ResponseToHost res;
-  res._endpoint=eGripper;
+  res._endpoint=eHost;
   res._response=eData;
   res._payload_size = sizeof(int);
   *(int*)res._payload = ActualPosition;
@@ -180,7 +180,7 @@ else if(_in_command._command == eGetPos){
 }
 else if(_in_command._command == eGetCurrent){
   ResponseToHost res;
-  res._endpoint=eGripper;
+  res._endpoint=eHost;
     res._response=eData;
   res._payload_size = sizeof(float);
   *(float*)res._payload = measureCurrent(A2);
@@ -189,7 +189,7 @@ else if(_in_command._command == eGetCurrent){
 else if(_in_command._command == eEnable){
   digitalWrite(SLEEP,HIGH);
     ResponseToHost res;
-  res._endpoint=eGripper;
+  res._endpoint=eHost;
   res._response=eConfirm;
   res._payload_size = sizeof(int);
   *(int*)res._payload = 102;
@@ -198,7 +198,7 @@ else if(_in_command._command == eEnable){
 else if(_in_command._command == eDisable){
     digitalWrite(_SLEEP,LOW);
     ResponseToHost res;
-  res._endpoint=eGripper;
+  res._endpoint=eHost;
     res._response=eConfirm;
   res._payload_size = sizeof(int);
   *(int*)res._payload = 103;
@@ -206,7 +206,7 @@ else if(_in_command._command == eDisable){
 }
 else if(_in_command._command == eReset){
     ResponseToHost res;
-  res._endpoint=eGripper;
+  res._endpoint=eHost;
     res._response=eConfirm;
   res._payload_size = sizeof(int);
   *(int*)res._payload = 104;
@@ -215,7 +215,7 @@ else if(_in_command._command == eReset){
 else if(_in_command._command == eCalibrate){
   calibrateGripper();
     ResponseToHost res;
-  res._endpoint=eGripper;
+  res._endpoint=eHost;
   res._response=eConfirm;
   res._payload_size = sizeof(int);
   *(int*)res._payload = 105;

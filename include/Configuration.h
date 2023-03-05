@@ -16,7 +16,7 @@
 
 #define EMA  0.1 //Current Sensing - > Motor Controller
 
-#define SLOW_LOOP_T 1000/40 //millies
+#define SLOW_LOOP_T 1000/30 //millies
 #define FAST_LOOP_T  500  //micros
 
 enum eResponse{
@@ -26,6 +26,7 @@ enum eResponse{
 };
 enum eEndpoints{
     eGripper,
+    eHost,
     eMLX,
 };
 
