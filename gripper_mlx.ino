@@ -58,9 +58,9 @@ void setup() {
 
 //Main Loop
 void loop() {
+    controll.run();
     if (millis() - SLOW_LOOP_PREV > SLOW_LOOP_T )
   {
-      controll.run();
 
     if(VERBOSE){
     Serial.print(MagneticSensor.x);

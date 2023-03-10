@@ -53,39 +53,36 @@ int RS485Comm::count_ones(byte array[], int length) {
 void RS485Comm::ReadFromHost() {
     byte byte_rc;
     int i=0;
-    while(mySerial->available() && i<2)
+    while(i<2)
     {
         byte_rc = mySerial->read();
-   
+        // Serial.println(byte_rc);
         if(byte_rc ==170)
         {    
             i++;
         }
         else{
-            i=0;
+            if(byte_rc!=0)
+                i=0;
         }
+        delay(1);
     }
-    
-    // while (mySerial->available()<6) 
-    // { 
-    //     delay(0.001);
-    // }
     CommandFromHost new_command;
-    if (mySerial->available())
+    if (mySerial->available()>=6)
     {
         byte address=mySerial->read();
-        Serial.print(address);Serial.print(",");
+        // Serial.print(address);Serial.print(",");
         new_command._endpoint=(eEndpoints)mySerial->read();
-        Serial.print(new_command._endpoint);Serial.print(",");
+        // Serial.print(new_command._endpoint);Serial.print(",");
         new_command._command=(eCommands)mySerial->read();
-        Serial.print(new_command._command);Serial.print(",");
+        // Serial.print(new_command._command);Serial.print(",");
         new_command._payload_size=(int)mySerial->read();
-        Serial.print(new_command._payload_size);Serial.print(",");
+        // Serial.print(new_command._payload_size);Serial.print(",");
         byte payload=mySerial->read();
         new_command._payload[0]=payload;
-        Serial.print((uint8_t)payload);Serial.print(",");
+        // Serial.print((uint8_t)payload);Serial.print(",");
         char tail=mySerial->read();
-        Serial.print((int)tail);Serial.println();
+        // Serial.print((int)tail);Serial.println();
 
     if ((tail)!=99 || (address)!=device_address)
     {
