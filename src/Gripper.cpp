@@ -1,7 +1,10 @@
 // Gripper.cpp
 #include "../include/Gripper.h"
+#include "../include/MLX90393.h"
 
 extern RS485Comm comms;
+extern MLX90393 MagneticSensor_right;
+extern MLX90393 MagneticSensor_left;
 
 Gripper::Gripper(int in1,int in2,int sleep,int pmode) {
   _IN1=in1;
@@ -159,7 +162,32 @@ float Gripper::measureCurrent(int cur_pin){
 
 void Gripper::distribute(CommandFromHost _in_command,SoftwareSerial *Ser){
 
-if(_in_command._command == eMoveToPos){
+if(_in_command._command == eGetStatus){
+  ResponseToHost res;
+  int target;
+  target=int(_in_command._payload[0]);
+  targetPosition=target;
+  int readings_right[3];
+  int readings_left[3];
+  MagneticSensor_right.Read();
+  MagneticSensor_left.Read();
+  readings_right[0]=MagneticSensor_right.x;
+  readings_right[1]=MagneticSensor_right.y;
+  readings_right[2]=MagneticSensor_right.z;
+  readings_left[0]=MagneticSensor_left.x;
+  readings_left[1]=MagneticSensor_left.y;
+  readings_left[2]=MagneticSensor_left.z;
+  float current= measureCurrent(A2);
+  memcpy(res._payload, &ActualPosition, sizeof(int));
+  memcpy(res._payload, &current, sizeof(float));
+  memcpy(res._payload, (char*)readings_right, sizeof(int) * 3);
+  memcpy(res._payload, (char*)readings_left, sizeof(int) * 3);
+  res._payload_size = sizeof(int)*7+sizeof(float);
+  res._endpoint=eHost;
+  res._response=eData;
+  comms.sendRes(res);
+  }
+else if(_in_command._command == eMoveToPos){
   int target;
   target=int(_in_command._payload[0]);
   targetPosition=target;

@@ -35,7 +35,7 @@ class RS485Comm {
     std::function<void(CommandFromHost)> _distribute_callback;
 
 
-    byte message_array[16];
+    byte message_array[50];
     byte current_array[4];
     byte packet_header{0b11001000};
     byte tail{0b11000111};

@@ -6,7 +6,7 @@
 
 class MLX90393 {
   public:
-    MLX90393();
+    MLX90393( unsigned char adr);
     void Read();
     void Setup();
     void distribute(CommandFromHost i_command,SoftwareSerial *Serial);

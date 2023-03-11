@@ -114,7 +114,7 @@ void RS485Comm:: sendRes(ResponseToHost res)
     message_array[6+res._payload_size] = crc_2;
     message_array[7+res._payload_size] = tail;
     
-
+    // Serial.println(message_array);
     mySerial->write(message_array, 8+res._payload_size);
     delay(1);
     prepare_receive();

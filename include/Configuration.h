@@ -19,6 +19,9 @@
 #define SLOW_LOOP_T 1000/30 //millies
 #define FAST_LOOP_T  500  //micros
 
+#define right_sensor 0x18
+#define left_sensor 0x19
+
 enum eResponse{
     eConfirm,
     eData,
@@ -27,7 +30,8 @@ enum eResponse{
 enum eEndpoints{
     eGripper,
     eHost,
-    eMLX,
+    eMLX_right,
+    eMLX_left,
 };
 
 enum eCommands{
@@ -44,7 +48,7 @@ enum eCommands{
     eMoveToPos,
     eGetPos,
     eGetCurrent,
-
+    eGetStatus,
 };
 class CommandFromHost{
     public:

@@ -15,7 +15,9 @@ class eResponse(Enum):
 
 class eEndpoints(Enum):
     eGripper =0
-    eMLX=1
+    eHost=1
+    eMLX_right=2
+    eMLX_left=3
 
 class eCommands(Enum):
     #Common Commands
@@ -31,6 +33,7 @@ class eCommands(Enum):
     eMoveToPos=5
     eGetPos=6
     eGetCurrent=7
+    eGetStatus=8
 
 class eResponseCodes(Enum):
     #Common Response codes for Commands
@@ -40,12 +43,12 @@ class eResponseCodes(Enum):
     eCalibrate=105
 
     #MLX Response codes for Commands
-    eGetMagField=4
+    # eGetMagField=4
 
     #Gripper Response codes for Commands
     eMoveToPos=101
-    eGetPos=6
-    eGetCurrent=7
+    # eGetPos=6
+    # eGetCurrent=7
 
 class eErrorCodes(Enum):
     eNoError="E0"
@@ -78,14 +81,14 @@ class Gripper:
             return
         self.serial=ser
         self.comms=Comms(self.serial)
-        self.sense_right=Sense(self.serial,"right",self.comms)
-        self.sense_left=Sense(self.serial,"left",self.comms)
+        self.sense_right=Sense(self.serial,"right",self.comms,self.adress)
+        self.sense_left=Sense(self.serial,"left",self.comms,self.adress)
     
     def get_sensor_data(self):
         left_sensor_data=self.sense_left.get_mag()
-        time.sleep(0.001)
+        # time.sleep(0.001)
         right_sensor_data=self.sense_right.get_mag()
-        time.sleep(0.001)
+        # time.sleep(0.001)
         return {"right":right_sensor_data,"left":left_sensor_data}
 
     def get_pos(self,print_data=False):
@@ -179,23 +182,36 @@ class Gripper:
             return res==eResponseCodes.eCalibrate.value
         return
     
-    
+    def get_status(self,print_data=False):
+        self.comms.send_data(self.adress,0,0,eEndpoints.eGripper.value,eCommands.eGetStatus.value)
+        time.sleep(0.001)
+        res=self.comms.receive_data()
+        tmout=time.time()
+        while (res==-1 or res is None) and time.time()-tmout<self.comms.recieve_timeout:
+            res=self.comms.receive_data()
+        if res!=-1:
+            if print_data:
+                print(res)  
+            return res
+        return
+
 class Sense:
-    def __init__(self,ser,side,com) -> None:
+    def __init__(self,ser,side,com,grip_adress) -> None:
         self.right_finger_address = 1
         self.left_finger_address = 2
         if side=="right":
-            self.adress=self.right_finger_address
+            self.adress=eEndpoints.eMLX_right.value
         elif side=="left":
-            self.adress=self.left_finger_address
+            self.adress=eEndpoints.eMLX_left.value
         else:   
             print("Enter right or left")
             return
         self.serial=ser
         self.comms=com
+        self.grip_adress=grip_adress
 
     def get_mag(self,print_data=False):
-        self.comms.send_data(self.adress,0,0,eEndpoints.eMLX.value,eCommands.eGetMagField.value)
+        self.comms.send_data(self.grip_adress,0,0,self.adress,eCommands.eGetMagField.value)
         time.sleep(0.001)
         res=self.comms.receive_data()
         tmout=time.time()
@@ -281,13 +297,18 @@ class Comms:
                 return -1
             
         self.received_message=dat
+        # print(dat)
         if len(dat) >=12:
+            # print(len(dat))
             byte_header1 = dat[0]
             byte_header2 = dat[1]
             endpoint= dat[2] 
             reponse=dat[3]
             payload_size=dat[4]
             payload=dat[5:5+payload_size]
+            if payload_size+8>len(dat):
+                return -1
+                
             crc1=dat[5+payload_size]
             crc2=dat[6+payload_size]
             tail=dat[7+payload_size]
@@ -326,10 +347,12 @@ if __name__ == '__main__':
     freq = 30
     i=0
     while True:
+        start=time.time()
         if i % 200 ==0:
             pos = random.randint(0,100)
+        
         gripper_right.set_pos(pos)
         gripper_right.get_pos(True)
         i+=1
-        time.sleep(1/freq)
+        # time.sleep((1/freq)-(time.time()-start))
         

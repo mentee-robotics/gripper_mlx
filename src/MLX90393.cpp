@@ -2,11 +2,11 @@
 #include "../include/MLX90393.h"
 
 extern RS485Comm comms;
-MLX90393::MLX90393() {
+MLX90393::MLX90393( unsigned char adr) {
   x=0;
   y=0;
   z=0;
-  _Addr=0x18;
+  _Addr=adr;
 
 }
 void MLX90393::Setup() {
@@ -84,7 +84,7 @@ void MLX90393::distribute(CommandFromHost i_command,SoftwareSerial *Serial){
   int readings[3];
   ResponseToHost res;
   res._endpoint=eHost;
-  res._response=eConfirm;
+  res._response=eData;
   res._payload_size = sizeof(int) * 3;
   readings[0]=x;
   readings[1]=y;
