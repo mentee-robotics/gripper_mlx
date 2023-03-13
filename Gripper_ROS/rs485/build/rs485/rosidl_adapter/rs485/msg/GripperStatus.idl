@@ -1,0 +1,24 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from rs485/msg/GripperStatus.msg
+// generated code does not contain a copyright notice
+
+
+module rs485 {
+  module msg {
+    struct GripperStatus {
+      int32 id;
+
+      int32 position;
+
+      float current;
+
+      int64 xmag;
+
+      int64 ymag;
+
+      int64 zmag;
+
+      int32 targetpos;
+    };
+  };
+};

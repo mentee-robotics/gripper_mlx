@@ -1,13 +1,17 @@
-#include "include/Gripper.h"
-#include "include/MLX90393.h"
 #include "include/Pinout.h"
 #include "include/Configuration.h"
+#include "include/Gripper.h"
+#include "include/MLX90393.h"
 #include "include/CommController.h"
 #include <SoftwareSerial.h>
+#include "include/Thread.h"
+#include "include/ThreadController.h"
 
+// ThreadController that will controll all threads
+ThreadController controll = ThreadController();
 
-
-
+//My Thread (as a pointer)
+Thread* Read = new Thread();
 
 int sampleCount = 0;
 int sampleRate = 0;
@@ -17,50 +21,74 @@ float output;
 int SLOW_LOOP_PREV =0;
 int FAST_LOOP_PREV =0;
 int target; 
+
 SoftwareSerial mySerial(rx_pin,tx_pin);
 Gripper grip(IN1,IN2,SLEEP,PMODE);
 RS485Comm comms(&mySerial);
-MLX90393 MagneticSensor(Addr);
+MLX90393 MagneticSensor_right(0x1A);
+MLX90393 MagneticSensor_left(0x18);
 
+void distribute(CommandFromHost i_command){
+  if(i_command._endpoint == eGripper)
+  {
+    grip.distribute(i_command,&mySerial);
+  }
+  else if(i_command._endpoint == eMLX_right)
+  {
+    MagneticSensor_right.distribute(i_command,&mySerial);
+}
+else if(i_command._endpoint == eMLX_left)
+  {
+    MagneticSensor_left.distribute(i_command,&mySerial);
+}
+  else
+  {
+    mySerial.write("E4");
+  }
+}
+void read()
+{
+comms.ReadFromHost();
+sampleCount++;
+}
 void setup() {
   Serial.begin(115200);
   grip.init_gripper();
-  MagneticSensor.Setup(Addr);
+  grip.calibrateGripper();
+  MagneticSensor_right.Setup();
+  MagneticSensor_left.Setup();
   comms.RS485Comm_setup();
+  comms.setCallback(&distribute); 
+  Read->onRun(read);
+	controll.add(Read);
 } 
 
 //Main Loop
 void loop() {
-//Communicationloop - 30Hz
-  if (millis() - SLOW_LOOP_PREV > SLOW_LOOP_T )
+    controll.run();
+    if (millis() - SLOW_LOOP_PREV > SLOW_LOOP_T )
   {
-    MagneticSensor.Read();
-    comms.mlx_x=MagneticSensor.x;
-    comms.mlx_y=MagneticSensor.y;
-    comms.mlx_z=MagneticSensor.z;
-    comms.actual_pos=grip.ActualPosition;
-    comms.current=grip.measureCurrent(Current);
-    target=comms.ReadFromHost();
-    // Serial.print(target);
-    // Serial.print(",");
-    // Serial.println(grip.ActualPosition);
-    if(VERBOSE){
-    Serial.print("  Mlx_x ");Serial.print(MagneticSensor.x);
-    Serial.print("  Mlx_y ");Serial.print(MagneticSensor.y);
-    Serial.print("  Mlx_z ");Serial.print(MagneticSensor.z);    
-    Serial.print("  Act_Pos ");Serial.print(grip.ActualPosition);
-    Serial.print("  Targ_Pos ");Serial.println(grip.targetPosition);
 
+    if(VERBOSE){
+    MagneticSensor_right.Read();
+    MagneticSensor_left.Read();
+    Serial.print(MagneticSensor_right.x);
+    Serial.print(",");Serial.print(MagneticSensor_right.y);
+    Serial.print(",");Serial.print(MagneticSensor_right.z);    
+    Serial.print(",");Serial.print(MagneticSensor_left.x);
+    Serial.print(",");Serial.print(MagneticSensor_left.y);
+    Serial.print(",");Serial.print(MagneticSensor_left.z); 
+    Serial.println();
     }
     SLOW_LOOP_PREV=millis();
+
   }  
 
   //Fast Loop - 500-1KHz
   if (micros() - FAST_LOOP_PREV > FAST_LOOP_T )
   {
-  output=grip.pidStep(target);
+  grip.pidStep();
   FAST_LOOP_PREV=micros();
-  sampleCount++;
   }
 
   //Print Samplerate loop 1Hz
@@ -68,6 +96,8 @@ void loop() {
   {
     sampleRate=sampleCount;
     previous=millis();
+    // Serial.println(sampleRate);
+
     sampleCount=0;    
   }  
 }

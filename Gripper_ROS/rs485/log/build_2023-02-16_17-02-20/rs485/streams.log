@@ -1,0 +1,132 @@
+[0.165s] Invoking command in '/home/nir/Desktop/rs485/build/rs485': CMAKE_PREFIX_PATH=/home/nir/Desktop/rs485/install/rs485:/opt/ros/foxy:/opt/ros/noetic CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/nir/Desktop/rs485/build/rs485 -- -j20 -l20
+[0.230s] [  2%] Built target rs485__cpp
+[0.230s] [ 12%] Built target rs485__rosidl_generator_c
+[0.252s] [ 41%] Built target rs485__rosidl_typesupport_cpp
+[0.252s] [ 41%] Built target rs485__rosidl_typesupport_introspection_cpp
+[0.252s] [ 48%] Built target rs485__rosidl_typesupport_introspection_c
+[0.252s] [ 53%] Built target rs485__rosidl_typesupport_c
+[0.254s] [ 64%] Built target rs485__rosidl_typesupport_fastrtps_cpp
+[0.280s] [ 74%] Built target rs485__rosidl_typesupport_fastrtps_c
+[0.294s] [ 74%] Built target rs485
+[0.313s] [ 76%] Built target rs485__py
+[0.359s] [ 84%] Built target rs485__python
+[0.388s] [ 92%] Built target rs485__rosidl_typesupport_c__pyext
+[0.388s] [ 94%] Built target rs485__rosidl_typesupport_introspection_c__pyext
+[0.390s] [100%] Built target rs485__rosidl_typesupport_fastrtps_c__pyext
+[0.399s] Invoked command in '/home/nir/Desktop/rs485/build/rs485' returned '0': CMAKE_PREFIX_PATH=/home/nir/Desktop/rs485/install/rs485:/opt/ros/foxy:/opt/ros/noetic CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/nir/Desktop/rs485/build/rs485 -- -j20 -l20
+[0.450s] Invoking command in '/home/nir/Desktop/rs485/build/rs485': CMAKE_PREFIX_PATH=/home/nir/Desktop/rs485/install/rs485:/opt/ros/foxy:/opt/ros/noetic CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --install /home/nir/Desktop/rs485/build/rs485
+[0.456s] -- Install configuration: ""
+[0.456s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/ament_index/resource_index/rosidl_interfaces/rs485
+[0.456s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485
+[0.456s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg
+[0.456s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/gripper_status.h
+[0.456s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/battery_status.h
+[0.456s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail
+[0.456s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/gripper_status__functions.h
+[0.456s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/gripper_status__type_support.h
+[0.457s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/battery_status__type_support.h
+[0.457s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/battery_status__functions.h
+[0.457s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/battery_status__functions.c
+[0.457s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/battery_status__struct.h
+[0.457s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/gripper_status__functions.c
+[0.457s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/gripper_status__struct.h
+[0.457s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/rosidl_generator_c__visibility_control.h
+[0.457s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/environment/library_path.sh
+[0.457s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/environment/library_path.dsv
+[0.457s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/lib/librs485__rosidl_generator_c.so
+[0.457s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485
+[0.457s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg
+[0.458s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[0.458s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail
+[0.458s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/gripper_status__rosidl_typesupport_fastrtps_c.h
+[0.458s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/battery_status__rosidl_typesupport_fastrtps_c.h
+[0.458s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/lib/librs485__rosidl_typesupport_fastrtps_c.so
+[0.458s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485
+[0.458s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg
+[0.458s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[0.458s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail
+[0.458s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/battery_status__rosidl_typesupport_fastrtps_cpp.hpp
+[0.458s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/dds_fastrtps
+[0.458s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/gripper_status__rosidl_typesupport_fastrtps_cpp.hpp
+[0.458s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/lib/librs485__rosidl_typesupport_fastrtps_cpp.so
+[0.459s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485
+[0.459s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg
+[0.459s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[0.459s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail
+[0.459s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/gripper_status__type_support.c
+[0.459s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/battery_status__rosidl_typesupport_introspection_c.h
+[0.459s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/battery_status__type_support.c
+[0.459s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/gripper_status__rosidl_typesupport_introspection_c.h
+[0.459s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/lib/librs485__rosidl_typesupport_introspection_c.so
+[0.459s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/lib/librs485__rosidl_typesupport_c.so
+[0.459s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485
+[0.459s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg
+[0.459s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/gripper_status.hpp
+[0.459s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/battery_status.hpp
+[0.459s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail
+[0.460s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/battery_status__struct.hpp
+[0.460s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/battery_status__builder.hpp
+[0.460s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/gripper_status__builder.hpp
+[0.460s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/gripper_status__traits.hpp
+[0.460s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/battery_status__traits.hpp
+[0.460s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/gripper_status__struct.hpp
+[0.460s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485
+[0.460s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg
+[0.460s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail
+[0.460s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/gripper_status__rosidl_typesupport_introspection_cpp.hpp
+[0.460s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/battery_status__type_support.cpp
+[0.460s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/gripper_status__type_support.cpp
+[0.460s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/include/rs485/msg/detail/battery_status__rosidl_typesupport_introspection_cpp.hpp
+[0.460s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/lib/librs485__rosidl_typesupport_introspection_cpp.so
+[0.460s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/lib/librs485__rosidl_typesupport_cpp.so
+[0.460s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/environment/pythonpath.sh
+[0.460s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/environment/pythonpath.dsv
+[0.460s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/lib/python3.9/site-packages/rs485/__init__.py
+[0.484s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/lib/python3.9/site-packages/rs485/msg
+[0.484s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/lib/python3.9/site-packages/rs485/msg/_battery_status.py
+[0.484s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/lib/python3.9/site-packages/rs485/msg/_gripper_status_s.c
+[0.484s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/lib/python3.9/site-packages/rs485/msg/__init__.py
+[0.484s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/lib/python3.9/site-packages/rs485/msg/_battery_status_s.c
+[0.484s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/lib/python3.9/site-packages/rs485/msg/_gripper_status.py
+[0.484s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/lib/python3.9/site-packages/rs485/rs485_s__rosidl_typesupport_fastrtps_c.cpython-39-x86_64-linux-gnu.so
+[0.485s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/lib/python3.9/site-packages/rs485/rs485_s__rosidl_typesupport_introspection_c.cpython-39-x86_64-linux-gnu.so
+[0.485s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/lib/python3.9/site-packages/rs485/rs485_s__rosidl_typesupport_c.cpython-39-x86_64-linux-gnu.so
+[0.485s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/lib/librs485__python.so
+[0.485s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/msg/GripperStatus.idl
+[0.485s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/msg/BatteryStatus.idl
+[0.485s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/msg/GripperStatus.msg
+[0.485s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/msg/BatteryStatus.msg
+[0.485s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/ament_index/resource_index/package_run_dependencies/rs485
+[0.485s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/ament_index/resource_index/parent_prefix_path/rs485
+[0.485s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/environment/ament_prefix_path.sh
+[0.485s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/environment/ament_prefix_path.dsv
+[0.485s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/environment/path.sh
+[0.485s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/environment/path.dsv
+[0.486s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/local_setup.bash
+[0.486s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/local_setup.sh
+[0.486s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/local_setup.zsh
+[0.486s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/local_setup.dsv
+[0.486s] -- Installing: /home/nir/Desktop/rs485/install/rs485/share/rs485/package.dsv
+[0.486s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/ament_index/resource_index/packages/rs485
+[0.486s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/cmake/rs485__rosidl_generator_cExport.cmake
+[0.486s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/cmake/rs485__rosidl_generator_cExport-noconfig.cmake
+[0.486s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/cmake/rs485__rosidl_typesupport_introspection_cExport.cmake
+[0.486s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/cmake/rs485__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[0.486s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/cmake/rs485__rosidl_typesupport_cExport.cmake
+[0.486s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/cmake/rs485__rosidl_typesupport_cExport-noconfig.cmake
+[0.486s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/cmake/rs485__rosidl_generator_cppExport.cmake
+[0.486s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/cmake/rs485__rosidl_typesupport_introspection_cppExport.cmake
+[0.486s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/cmake/rs485__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[0.486s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/cmake/rs485__rosidl_typesupport_cppExport.cmake
+[0.486s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/cmake/rs485__rosidl_typesupport_cppExport-noconfig.cmake
+[0.486s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/cmake/rosidl_cmake-extras.cmake
+[0.486s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/cmake/ament_cmake_export_dependencies-extras.cmake
+[0.486s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/cmake/ament_cmake_export_libraries-extras.cmake
+[0.486s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/cmake/ament_cmake_export_targets-extras.cmake
+[0.486s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/cmake/ament_cmake_export_include_directories-extras.cmake
+[0.486s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[0.486s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[0.486s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/cmake/rs485Config.cmake
+[0.486s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/cmake/rs485Config-version.cmake
+[0.486s] -- Up-to-date: /home/nir/Desktop/rs485/install/rs485/share/rs485/package.xml
+[0.488s] Invoked command in '/home/nir/Desktop/rs485/build/rs485' returned '0': CMAKE_PREFIX_PATH=/home/nir/Desktop/rs485/install/rs485:/opt/ros/foxy:/opt/ros/noetic CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --install /home/nir/Desktop/rs485/build/rs485

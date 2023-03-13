@@ -1,3 +1,7 @@
+#ifndef _PINOUT_H
+#define _PINOUT_H
+
+
 #define ActualPos A0
 
 #define Current A2
@@ -11,3 +15,4 @@
 #define RE 6
 #define DE 7
 
+#endif
